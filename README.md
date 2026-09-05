@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 3** (Python Basics)
+**Covered so far: Day 1 – Day 4** (Python Basics)
 
 ---
 
@@ -78,6 +78,25 @@ trap · `*args` and `**kwargs` · local and global scope · the LEGB rule ·
 | [Slides (PDF)](Day-03-Functions-and-Scope/Day3_Functions_and_Scope.pdf) · [PowerPoint](Day-03-Functions-and-Scope/Day3_Functions_and_Scope.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-03-Functions-and-Scope/Day3_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-03-Functions-and-Scope/Day3_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-03-Functions-and-Scope/Day3_Practice_Solutions.ipynb) |
+
+---
+
+### Day 4 — Lists, Tuples & Sets
+
+Creating lists and indexing forwards and backwards · slicing with `[start:stop:step]` ·
+list methods: `append`, `insert`, `extend`, `remove`, `pop`, `clear` · `sort()` vs `sorted()` ·
+copying a list and why `b = a` is not a copy · tuples and immutability · the single-element
+tuple · unpacking · sets, uniqueness and fast membership · set algebra: union, intersection,
+difference, symmetric difference · choosing between the three, and converting between them
+
+📁 [`Day-04-Lists-Tuples-Sets`](Day-04-Lists-Tuples-Sets)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-04-Lists-Tuples-Sets/Day4_Lists_Tuples_Sets.pdf) · [PowerPoint](Day-04-Lists-Tuples-Sets/Day4_Lists_Tuples_Sets.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-04-Lists-Tuples-Sets/Day4_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-04-Lists-Tuples-Sets/Day4_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -106,6 +125,10 @@ of height `n` · sum every third number from 1 to 100
 
 **Day 3** — rewrite the guessing game using three functions · write
 `is_valid_email(text)` returning `True` / `False` · add docstrings to everything
+
+**Day 4** — write `remove_duplicates(items)` that keeps the original order · given two
+lists, print the items in both, in either, and in only one · rotate a list by `n` positions
+using slicing
 
 ---
 
