@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 4** (Python Basics)
+**Covered so far: Day 1 – Day 5** (Python Basics)
 
 ---
 
@@ -97,6 +97,25 @@ difference, symmetric difference · choosing between the three, and converting b
 | [Slides (PDF)](Day-04-Lists-Tuples-Sets/Day4_Lists_Tuples_Sets.pdf) · [PowerPoint](Day-04-Lists-Tuples-Sets/Day4_Lists_Tuples_Sets.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-04-Lists-Tuples-Sets/Day4_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-04-Lists-Tuples-Sets/Day4_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-04-Lists-Tuples-Sets/Day4_Practice_Solutions.ipynb) |
+
+---
+
+### Day 5 — Dictionaries
+
+Key-value pairs and why data that explains itself beats data indexed by position ·
+creating dictionaries · `KeyError` and reading safely with `.get()` · adding, updating and
+removing entries · `setdefault` · iterating with `keys()`, `values()` and `items()` ·
+why `in` checks keys · insertion order · the counting pattern · the grouping pattern ·
+merging dictionaries · nested dictionaries and safe deep access · what can be a key
+
+📁 [`Day-05-Dictionaries`](Day-05-Dictionaries)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-05-Dictionaries/Day5_Dictionaries.pdf) · [PowerPoint](Day-05-Dictionaries/Day5_Dictionaries.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-05-Dictionaries/Day5_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-05-Dictionaries/Day5_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -129,6 +148,9 @@ of height `n` · sum every third number from 1 to 100
 **Day 4** — write `remove_duplicates(items)` that keeps the original order · given two
 lists, print the items in both, in either, and in only one · rotate a list by `n` positions
 using slicing
+
+**Day 5** — count how many times each letter appears in a sentence · invert a dictionary
+so the values become keys · extend the gradebook with a `top_student()` function
 
 ---
 
