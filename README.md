@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 5** (Python Basics)
+**Covered so far: Day 1 – Day 6** (Python Basics)
 
 ---
 
@@ -116,6 +116,25 @@ merging dictionaries · nested dictionaries and safe deep access · what can be 
 | [Slides (PDF)](Day-05-Dictionaries/Day5_Dictionaries.pdf) · [PowerPoint](Day-05-Dictionaries/Day5_Dictionaries.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-05-Dictionaries/Day5_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-05-Dictionaries/Day5_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-05-Dictionaries/Day5_Practice_Solutions.ipynb) |
+
+---
+
+### Day 6 — Comprehensions
+
+Turning a build-a-list loop into one line · the basic form `[expression for item in iterable]` ·
+filtering with a trailing `if` · choosing with `if`/`else` at the front, and why the position
+changes the meaning · dictionary comprehensions · set comprehensions · why there is no tuple
+comprehension · nested loops and nested comprehensions · generator expressions and exhaustion ·
+when a plain loop is the better choice
+
+📁 [`Day-06-Comprehensions`](Day-06-Comprehensions)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-06-Comprehensions/Day6_Comprehensions.pdf) · [PowerPoint](Day-06-Comprehensions/Day6_Comprehensions.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-06-Comprehensions/Day6_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-06-Comprehensions/Day6_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -151,6 +170,9 @@ using slicing
 
 **Day 5** — count how many times each letter appears in a sentence · invert a dictionary
 so the values become keys · extend the gradebook with a `top_student()` function
+
+**Day 6** — rewrite three loops from Days 2–5 as comprehensions · build `{word: length}`
+for a sentence · find one comprehension that is worse than its loop, and explain why
 
 ---
 
