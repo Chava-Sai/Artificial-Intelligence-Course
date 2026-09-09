@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 6** (Python Basics)
+**Covered so far: Day 1 – Day 7** (Python Basics · OOP)
 
 ---
 
@@ -135,6 +135,25 @@ when a plain loop is the better choice
 | [Slides (PDF)](Day-06-Comprehensions/Day6_Comprehensions.pdf) · [PowerPoint](Day-06-Comprehensions/Day6_Comprehensions.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-06-Comprehensions/Day6_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-06-Comprehensions/Day6_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-06-Comprehensions/Day6_Practice_Solutions.ipynb) |
+
+---
+
+### Day 7 — Classes & Objects
+
+Why a class beats a dictionary once behaviour is involved · a class as a blueprint and an
+object as one thing built from it · `__init__` and what `self` actually is · why
+`obj.method()` is `Class.method(obj)` · instance attributes · methods that read state versus
+methods that change it · class attributes and why one must never be a list · `__str__` and
+the other dunder methods · when a dict or a plain function is the better choice
+
+📁 [`Day-07-Classes-and-Objects`](Day-07-Classes-and-Objects)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-07-Classes-and-Objects/Day7_Classes_and_Objects.pdf) · [PowerPoint](Day-07-Classes-and-Objects/Day7_Classes_and_Objects.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-07-Classes-and-Objects/Day7_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-07-Classes-and-Objects/Day7_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -173,6 +192,9 @@ so the values become keys · extend the gradebook with a `top_student()` functio
 
 **Day 6** — rewrite three loops from Days 2–5 as comprehensions · build `{word: length}`
 for a sentence · find one comprehension that is worse than its loop, and explain why
+
+**Day 7** — write a `Book` class with a `summary()` method and `__str__` · rewrite Day 5's
+gradebook as a `Gradebook` class with `add_mark()` and `top_student()`
 
 ---
 
