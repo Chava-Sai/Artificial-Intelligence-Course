@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 7** (Python Basics · OOP)
+**Covered so far: Day 1 – Day 8** (Python Basics · OOP)
 
 ---
 
@@ -154,6 +154,25 @@ the other dunder methods · when a dict or a plain function is the better choice
 | [Slides (PDF)](Day-07-Classes-and-Objects/Day7_Classes_and_Objects.pdf) · [PowerPoint](Day-07-Classes-and-Objects/Day7_Classes_and_Objects.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-07-Classes-and-Objects/Day7_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-07-Classes-and-Objects/Day7_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-07-Classes-and-Objects/Day7_Practice_Solutions.ipynb) |
+
+---
+
+### Day 8 — Inheritance & Polymorphism
+
+Reusing a class with `class Child(Parent)` · what a child inherits · `isinstance` and
+`issubclass` · method overriding and how Python searches the chain · `super()` for extending
+rather than replacing · why a child `__init__` must call `super().__init__()` first ·
+polymorphism and writing one loop for many classes · duck typing · multiple inheritance and
+the MRO · choosing composition over inheritance with the "IS A / HAS A" test
+
+📁 [`Day-08-Inheritance-and-Polymorphism`](Day-08-Inheritance-and-Polymorphism)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-08-Inheritance-and-Polymorphism/Day8_Inheritance_and_Polymorphism.pdf) · [PowerPoint](Day-08-Inheritance-and-Polymorphism/Day8_Inheritance_and_Polymorphism.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-08-Inheritance-and-Polymorphism/Day8_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-08-Inheritance-and-Polymorphism/Day8_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -195,6 +214,10 @@ for a sentence · find one comprehension that is worse than its loop, and explai
 
 **Day 7** — write a `Book` class with a `summary()` method and `__str__` · rewrite Day 5's
 gradebook as a `Gradebook` class with `add_mark()` and `top_student()`
+
+**Day 8** — build a `Shape` parent with `Circle` and `Square` children · extend Day 7's
+`BankAccount` into a `SavingsAccount` that adds interest · find one place where inheritance
+would be the wrong choice
 
 ---
 
