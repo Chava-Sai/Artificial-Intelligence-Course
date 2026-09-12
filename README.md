@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 8** (Python Basics · OOP)
+**Covered so far: Day 1 – Day 9** (Python Basics · OOP · Files)
 
 ---
 
@@ -173,6 +173,25 @@ the MRO · choosing composition over inheritance with the "IS A / HAS A" test
 | [Slides (PDF)](Day-08-Inheritance-and-Polymorphism/Day8_Inheritance_and_Polymorphism.pdf) · [PowerPoint](Day-08-Inheritance-and-Polymorphism/Day8_Inheritance_and_Polymorphism.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-08-Inheritance-and-Polymorphism/Day8_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-08-Inheritance-and-Polymorphism/Day8_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-08-Inheritance-and-Polymorphism/Day8_Practice_Solutions.ipynb) |
+
+---
+
+### Day 9 — File I/O
+
+`open()` and why you always use `with` · the `encoding` argument · four ways to read a file
+and which to default to · why every line keeps its newline · file modes `r` / `w` / `a` / `x`
+and the one that erases your data · writing, and why `write()` adds no newline · why
+`split(",")` is not safe on a CSV · `csv.reader` and `csv.DictReader` · writing CSV ·
+`FileNotFoundError` and handling a missing file
+
+📁 [`Day-09-File-IO`](Day-09-File-IO)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-09-File-IO/Day9_File_IO.pdf) · [PowerPoint](Day-09-File-IO/Day9_File_IO.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-09-File-IO/Day9_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-09-File-IO/Day9_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -218,6 +237,9 @@ gradebook as a `Gradebook` class with `add_mark()` and `top_student()`
 **Day 8** — build a `Shape` parent with `Circle` and `Square` children · extend Day 7's
 `BankAccount` into a `SavingsAccount` that adds interest · find one place where inheritance
 would be the wrong choice
+
+**Day 9** — write a word-frequency counter that reads a text file · read a CSV and write
+out only the rows that pass a filter · add `try`/`except` to every file function you have written
 
 ---
 
