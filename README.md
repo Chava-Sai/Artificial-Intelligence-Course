@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 9** (Python Basics · OOP · Files)
+**Covered so far: Day 1 – Day 11** (Python Basics · OOP · Files · Errors)
 
 ---
 
@@ -192,7 +192,7 @@ and the one that erases your data · writing, and why `write()` adds no newline 
 | [Slides (PDF)](Day-09-File-IO/Day9_File_IO.pdf) · [PowerPoint](Day-09-File-IO/Day9_File_IO.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-09-File-IO/Day9_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-09-File-IO/Day9_Practice_Questions.ipynb) |
-| Practice solutions | *posted after the practice session* |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-09-File-IO/Day9_Practice_Solutions.ipynb) |
 | Sample data | [`sample-files/`](Day-09-File-IO/sample-files) — [names.txt](Day-09-File-IO/sample-files/names.txt) · [marks.csv](Day-09-File-IO/sample-files/marks.csv) · [cities.csv](Day-09-File-IO/sample-files/cities.csv) · [essay.txt](Day-09-File-IO/sample-files/essay.txt) · [full file list](Day-09-File-IO/sample-files/README.md) |
 
 **About the sample files.** Both notebooks create these for you in their first cell, so they
@@ -200,6 +200,32 @@ run anywhere with nothing to download. The copies here are for reading and for a
 wants to work outside Colab. `marks.csv` deliberately contains a value with a comma inside
 it, and `names.txt` deliberately has no newline on its last line — both are there so the
 lessons about `split(",")` and `.strip()` can be seen on real data.
+
+---
+
+### Day 10 — Module 1 Assessment
+
+A 45-minute, 50-question assessment covering Days 1–9, delivered as a self-grading Google
+Form. Not published here.
+
+---
+
+### Day 11 — Exceptions & Modules
+
+Reading a traceback from the bottom up · the exception hierarchy and why catching a parent
+catches its children · `try` / `except` / `else` / `finally` · catching the specific
+exception and ordering blocks correctly · why a bare `except:` and a silent `pass` are
+dangerous · `raise` and custom exception classes · re-raising · the four import forms and
+why `import *` is never right · the standard library · writing your own modules and packages
+
+📁 [`Day-11-Exceptions-and-Modules`](Day-11-Exceptions-and-Modules)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-11-Exceptions-and-Modules/Day11_Exceptions_and_Modules.pdf) · [PowerPoint](Day-11-Exceptions-and-Modules/Day11_Exceptions_and_Modules.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-11-Exceptions-and-Modules/Day11_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-11-Exceptions-and-Modules/Day11_Practice_Questions.ipynb) |
+| Practice solutions | *posted after the practice session* |
 
 ---
 
@@ -247,6 +273,9 @@ would be the wrong choice
 
 **Day 9** — write a word-frequency counter that reads a text file · read a CSV and write
 out only the rows that pass a filter · add `try`/`except` to every file function you have written
+
+**Day 11** — add proper exception handling to your Day 9 CSV functions · write a custom
+exception for one rule in your own code · split a notebook into a `helpers.py` module and import it
 
 ---
 
