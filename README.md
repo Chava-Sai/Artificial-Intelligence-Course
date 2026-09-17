@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 11** (Python Basics · OOP · Files · Errors)
+**Covered so far: Day 1 – Day 12** (Python Basics · OOP · Files · Errors · NumPy)
 
 ---
 
@@ -225,6 +225,25 @@ why `import *` is never right · the standard library · writing your own module
 | [Slides (PDF)](Day-11-Exceptions-and-Modules/Day11_Exceptions_and_Modules.pdf) · [PowerPoint](Day-11-Exceptions-and-Modules/Day11_Exceptions_and_Modules.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-11-Exceptions-and-Modules/Day11_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-11-Exceptions-and-Modules/Day11_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-11-Exceptions-and-Modules/Day11_Practice_Solutions.ipynb) |
+
+---
+
+### Day 12 — NumPy: Arrays & Indexing
+
+Why an array beats a list, and what it gives up · the ndarray: one dtype, one block of
+memory · creating arrays with `array`, `arange`, `linspace`, `zeros`, `ones`, `random` ·
+`shape`, `ndim`, `size`, `dtype` · 1-D and 2-D indexing, and `m[:, 0]` versus `m[0]` ·
+**why a NumPy slice is a view, not a copy** · boolean masking with `&` `|` `~` ·
+reshaping, the `-1` trick, `flatten` vs `ravel`, transpose
+
+📁 [`Day-12-NumPy-Arrays`](Day-12-NumPy-Arrays)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-12-NumPy-Arrays/Day12_NumPy_Arrays.pdf) · [PowerPoint](Day-12-NumPy-Arrays/Day12_NumPy_Arrays.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-12-NumPy-Arrays/Day12_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-12-NumPy-Arrays/Day12_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -276,6 +295,9 @@ out only the rows that pass a filter · add `try`/`except` to every file functio
 
 **Day 11** — add proper exception handling to your Day 9 CSV functions · write a custom
 exception for one rule in your own code · split a notebook into a `helpers.py` module and import it
+
+**Day 12** — rewrite Day 2's times table using `np.arange` and `reshape` · take a 5×4 array
+and print each row's maximum without a loop · prove a slice is a view, then break the link with `.copy()`
 
 ---
 
