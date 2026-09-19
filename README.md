@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 12** (Python Basics · OOP · Files · Errors · NumPy)
+**Covered so far: Day 1 – Day 13** (Python Basics · OOP · Files · Errors · NumPy)
 
 ---
 
@@ -244,6 +244,25 @@ reshaping, the `-1` trick, `flatten` vs `ravel`, transpose
 | [Slides (PDF)](Day-12-NumPy-Arrays/Day12_NumPy_Arrays.pdf) · [PowerPoint](Day-12-NumPy-Arrays/Day12_NumPy_Arrays.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-12-NumPy-Arrays/Day12_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-12-NumPy-Arrays/Day12_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-12-NumPy-Arrays/Day12_Practice_Solutions.ipynb) |
+
+---
+
+### Day 13 — Broadcasting & Vectorised Operations
+
+Element-wise arithmetic and why the loop disappears · `a * b` versus `a @ b` · universal
+functions · **broadcasting: align the shapes from the right, dimensions fit when equal or
+when one is 1** · why nothing is copied · reading a broadcast error, and `reshape(-1, 1)` to
+make a column · aggregation and the axis rule · `argmax` returns a position · `std` and
+`ddof` · vectorised logic with `np.where`, `np.clip`, `any` and `all`
+
+📁 [`Day-13-Broadcasting`](Day-13-Broadcasting)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-13-Broadcasting/Day13_Broadcasting.pdf) · [PowerPoint](Day-13-Broadcasting/Day13_Broadcasting.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-13-Broadcasting/Day13_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-13-Broadcasting/Day13_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -298,6 +317,10 @@ exception for one rule in your own code · split a notebook into a `helpers.py` 
 
 **Day 12** — rewrite Day 2's times table using `np.arange` and `reshape` · take a 5×4 array
 and print each row's maximum without a loop · prove a slice is a view, then break the link with `.copy()`
+
+**Day 13** — standardise a 10×4 random array and prove each column has mean 0 · build a
+10×10 multiplication table with broadcasting and no loops · write down three shape pairs that
+will **not** broadcast, and why
 
 ---
 
