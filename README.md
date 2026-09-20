@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 13** (Python Basics · OOP · Files · Errors · NumPy)
+**Covered so far: Day 1 – Day 14** (Python Basics · OOP · Files · Errors · NumPy)
 
 ---
 
@@ -263,6 +263,26 @@ make a column · aggregation and the axis rule · `argmax` returns a position ·
 | [Slides (PDF)](Day-13-Broadcasting/Day13_Broadcasting.pdf) · [PowerPoint](Day-13-Broadcasting/Day13_Broadcasting.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-13-Broadcasting/Day13_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-13-Broadcasting/Day13_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-13-Broadcasting/Day13_Practice_Solutions.ipynb) |
+
+---
+
+### Day 14 — NumPy Statistical Functions
+
+Mean versus median, and why one outlier decides which to trust · weighted averages · why
+there is no `np.mode`, and building one from `np.unique` · variance, standard deviation and
+NumPy's own `ddof` inconsistency · percentiles, quartiles and the IQR · the 1.5 × IQR
+outlier rule · **missing data: what `nan` is, why `nan != nan`, and how one value poisons a
+whole summary** · the nan-aware functions, and why `np.nansum` of an all-missing column
+returns `0.0` · correlation, and the two things `r` does not tell you
+
+📁 [`Day-14-NumPy-Statistics`](Day-14-NumPy-Statistics)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-14-NumPy-Statistics/Day14_NumPy_Statistics.pdf) · [PowerPoint](Day-14-NumPy-Statistics/Day14_NumPy_Statistics.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-14-NumPy-Statistics/Day14_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-14-NumPy-Statistics/Day14_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -321,6 +341,10 @@ and print each row's maximum without a loop · prove a slice is a view, then bre
 **Day 13** — standardise a 10×4 random array and prove each column has mean 0 · build a
 10×10 multiplication table with broadcasting and no loops · write down three shape pairs that
 will **not** broadcast, and why
+
+**Day 14** — write `describe()` for a 2-D array, reporting per column · find the outliers in
+a dataset using the 1.5 × IQR rule · take a clean array, blank out three values, and compare
+every summary before and after
 
 ---
 
