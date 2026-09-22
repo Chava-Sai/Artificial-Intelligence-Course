@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 14** (Python Basics · OOP · Files · Errors · NumPy)
+**Covered so far: Day 1 – Day 15** (Python Basics · OOP · Files · Errors · NumPy · pandas)
 
 ---
 
@@ -283,6 +283,26 @@ returns `0.0` · correlation, and the two things `r` does not tell you
 | [Slides (PDF)](Day-14-NumPy-Statistics/Day14_NumPy_Statistics.pdf) · [PowerPoint](Day-14-NumPy-Statistics/Day14_NumPy_Statistics.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-14-NumPy-Statistics/Day14_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-14-NumPy-Statistics/Day14_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-14-NumPy-Statistics/Day14_Practice_Solutions.ipynb) |
+
+---
+
+### Day 15 — pandas: Series & DataFrames
+
+A DataFrame as NumPy columns with names attached · the Series as a labelled array that
+behaves like both a dict and an array · **pandas skips `nan` by default where NumPy does
+not, and uses `ddof=1` where NumPy uses `ddof=0`** · building DataFrames from dicts, lists
+of dicts and `read_csv` · per-column dtypes · `df["col"]` versus `df[["a", "b"]]` · why
+`df.count` is not your column · derived columns with no loops · the five inspection
+commands · `to_csv(index=False)`
+
+📁 [`Day-15-pandas-Series-DataFrames`](Day-15-pandas-Series-DataFrames)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-15-pandas-Series-DataFrames/Day15_pandas_Series_DataFrames.pdf) · [PowerPoint](Day-15-pandas-Series-DataFrames/Day15_pandas_Series_DataFrames.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-15-pandas-Series-DataFrames/Day15_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-15-pandas-Series-DataFrames/Day15_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -345,6 +365,10 @@ will **not** broadcast, and why
 **Day 14** — write `describe()` for a 2-D array, reporting per column · find the outliers in
 a dataset using the 1.5 × IQR rule · take a clean array, blank out three values, and compare
 every summary before and after
+
+**Day 15** — rebuild Day 9's CSV report in pandas and compare the line counts · create a
+DataFrame of 5 things you own, with 4 columns of different types · run the five inspection
+commands on any CSV you can find
 
 ---
 
