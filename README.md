@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 15** (Python Basics · OOP · Files · Errors · NumPy · pandas)
+**Covered so far: Day 1 – Day 16** (Python Basics · OOP · Files · Errors · NumPy · pandas)
 
 ---
 
@@ -303,6 +303,25 @@ commands · `to_csv(index=False)`
 | [Slides (PDF)](Day-15-pandas-Series-DataFrames/Day15_pandas_Series_DataFrames.pdf) · [PowerPoint](Day-15-pandas-Series-DataFrames/Day15_pandas_Series_DataFrames.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-15-pandas-Series-DataFrames/Day15_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-15-pandas-Series-DataFrames/Day15_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-15-pandas-Series-DataFrames/Day15_Practice_Solutions.ipynb) |
+
+---
+
+### Day 16 — Filtering, Selection & Indexing
+
+**`loc` speaks labels, `iloc` speaks positions** — and they agree on a fresh DataFrame,
+which is the trap · `loc` slicing includes the stop, `iloc` excludes it · boolean masks on a
+DataFrame with `&` `|` `~` · **why `df[mask]["col"] = v` silently does nothing** · `isin`,
+`between` (inclusive at both ends), `query`, `sort_values`, `nlargest` · `set_index` ·
+**why filtering makes `loc[2]` fail on a row you can see**, and `reset_index(drop=True)`
+
+📁 [`Day-16-Filtering-and-Indexing`](Day-16-Filtering-and-Indexing)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-16-Filtering-and-Indexing/Day16_Filtering_and_Indexing.pdf) · [PowerPoint](Day-16-Filtering-and-Indexing/Day16_Filtering_and_Indexing.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-16-Filtering-and-Indexing/Day16_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-16-Filtering-and-Indexing/Day16_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -369,6 +388,10 @@ every summary before and after
 **Day 15** — rebuild Day 9's CSV report in pandas and compare the line counts · create a
 DataFrame of 5 things you own, with 4 columns of different types · run the five inspection
 commands on any CSV you can find
+
+**Day 16** — filter a dataset, then show `loc` and `iloc` disagreeing on the same number ·
+write five questions about a CSV and answer each with one filter · set a meaningful index on a
+dataset and look up three rows by name
 
 ---
 
