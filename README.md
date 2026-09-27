@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 16** (Python Basics · OOP · Files · Errors · NumPy · pandas)
+**Covered so far: Day 1 – Day 18** (Python Basics · OOP · Files · Errors · NumPy · pandas)
 
 ---
 
@@ -322,6 +322,47 @@ DataFrame with `&` `|` `~` · **why `df[mask]["col"] = v` silently does nothing*
 | [Slides (PDF)](Day-16-Filtering-and-Indexing/Day16_Filtering_and_Indexing.pdf) · [PowerPoint](Day-16-Filtering-and-Indexing/Day16_Filtering_and_Indexing.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-16-Filtering-and-Indexing/Day16_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-16-Filtering-and-Indexing/Day16_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-16-Filtering-and-Indexing/Day16_Practice_Solutions.ipynb) |
+
+---
+
+### Day 17 — GroupBy & Aggregation
+
+Split, apply, combine — and hearing the word **"per"** in a question · the group key becomes
+the index, and results are sorted by key rather than by value · `size()` counts rows while
+`count()` counts non-missing values · `agg` with a list, with a dict, and **named
+aggregation** · grouping by two columns, `unstack` and `pivot_table` · **`agg` shrinks the
+table, `transform` keeps its shape** · ⚠️ rows with a missing group key are dropped
+silently — `dropna=False` and an `assert` on the counts
+
+📁 [`Day-17-GroupBy-Aggregation`](Day-17-GroupBy-Aggregation)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-17-GroupBy-Aggregation/Day17_GroupBy_Aggregation.pdf) · [PowerPoint](Day-17-GroupBy-Aggregation/Day17_GroupBy_Aggregation.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-17-GroupBy-Aggregation/Day17_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-17-GroupBy-Aggregation/Day17_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-17-GroupBy-Aggregation/Day17_Practice_Solutions.ipynb) |
+
+---
+
+### Day 18 — Merge, Join & Concat
+
+The real question in every merge: what happens to rows that **don't** match · the four joins
+— `inner` (the silent default), `left`, `right`, `outer` — and how the same two tables give
+3, 5, 4 and 6 rows · `indicator=True` to diagnose before you choose · why an unmatched row
+turns an int column into float · keys with different names, and `suffixes` · **duplicate
+keys multiply rows — three merged with three can give five, and inflate every total** ·
+`validate=` and `assert len(after) == len(before)` · `concat` for stacking, `ignore_index`,
+and why `axis=1` aligns on the index rather than a key
+
+📁 [`Day-18-Merge-Join-Concat`](Day-18-Merge-Join-Concat)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-18-Merge-Join-Concat/Day18_Merge_Join_Concat.pdf) · [PowerPoint](Day-18-Merge-Join-Concat/Day18_Merge_Join_Concat.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-18-Merge-Join-Concat/Day18_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-18-Merge-Join-Concat/Day18_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -392,6 +433,14 @@ commands on any CSV you can find
 **Day 16** — filter a dataset, then show `loc` and `iloc` disagreeing on the same number ·
 write five questions about a CSV and answer each with one filter · set a meaningful index on a
 dataset and look up three rows by name
+
+**Day 17** — rewrite Day 15's loop-over-cities as a single `groupby` · build a report with
+four named aggregations and an `assert` that the counts add up · use `transform` to find every
+row above its own group's average
+
+**Day 18** — take two CSVs and run all four joins, recording the row count of each ·
+deliberately duplicate a key and watch the row count explode · rebuild Day 9's city lookup as
+a merge instead of a dictionary
 
 ---
 
