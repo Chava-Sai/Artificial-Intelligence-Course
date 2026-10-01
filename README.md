@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 18** (Python Basics · OOP · Files · Errors · NumPy · pandas)
+**Covered so far: Day 1 – Day 19** (Python Basics · OOP · Files · Errors · NumPy · pandas · Cleaning)
 
 ---
 
@@ -363,6 +363,27 @@ and why `axis=1` aligns on the index rather than a key
 | [Slides (PDF)](Day-18-Merge-Join-Concat/Day18_Merge_Join_Concat.pdf) · [PowerPoint](Day-18-Merge-Join-Concat/Day18_Merge_Join_Concat.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-18-Merge-Join-Concat/Day18_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-18-Merge-Join-Concat/Day18_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-18-Merge-Join-Concat/Day18_Practice_Solutions.ipynb) |
+
+---
+
+### Day 19 — Missing Values & Duplicates
+
+**There is no neutral choice** — dropping loses information, filling invents it · finding
+gaps with `isna().sum()` and `.mean()` · **the gaps `isna()` cannot see**: `-999`, `"N/A"`,
+`"unknown"`, and fixing them with `na_values=` at read time · asking *why* values are missing
+before deciding · `dropna` with `subset`, `thresh` and `how` · `fillna`, `ffill` and
+`interpolate` — and **measuring the cost: mean-filling holds the mean but shrinks the
+spread** · `drop_duplicates` with `subset=` and `keep=` · near-duplicates, and **why
+normalising text must come before deduplicating**
+
+📁 [`Day-19-Missing-Values-Duplicates`](Day-19-Missing-Values-Duplicates)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-19-Missing-Values-Duplicates/Day19_Missing_Values_Duplicates.pdf) · [PowerPoint](Day-19-Missing-Values-Duplicates/Day19_Missing_Values_Duplicates.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-19-Missing-Values-Duplicates/Day19_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-19-Missing-Values-Duplicates/Day19_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -441,6 +462,10 @@ row above its own group's average
 **Day 18** — take two CSVs and run all four joins, recording the row count of each ·
 deliberately duplicate a key and watch the row count explode · rebuild Day 9's city lookup as
 a merge instead of a dictionary
+
+**Day 19** — take a messy CSV and write a cleaning pipeline that prints a receipt · fill one
+column three different ways and compare the mean and std each time · find a dataset where
+dropping the gaps biases the result, and say how
 
 ---
 
