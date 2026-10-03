@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 19** (Python Basics · OOP · Files · Errors · NumPy · pandas · Cleaning)
+**Covered so far: Day 1 – Day 20** (Python Basics · OOP · Files · Errors · NumPy · pandas · Cleaning · Visualisation)
 
 ---
 
@@ -384,7 +384,41 @@ normalising text must come before deduplicating**
 | [Slides (PDF)](Day-19-Missing-Values-Duplicates/Day19_Missing_Values_Duplicates.pdf) · [PowerPoint](Day-19-Missing-Values-Duplicates/Day19_Missing_Values_Duplicates.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-19-Missing-Values-Duplicates/Day19_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-19-Missing-Values-Duplicates/Day19_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-19-Missing-Values-Duplicates/Day19_Practice_Solutions.ipynb) |
+
+---
+
+### Day 20 — Outliers, Matplotlib & Seaborn
+
+*Three topics in one session: you find an outlier with arithmetic, but you can only decide
+about it by looking.*
+
+**Outliers** — typo, sentinel, or the finding itself · the 1.5 × IQR rule · **why a z-score
+can miss the very outlier distorting its own mean** · keep, remove, cap with `clip()`, or
+transform — and what each costs
+**Matplotlib** — Anscombe's quartet: identical statistics, four different shapes · always
+`fig, ax = plt.subplots()` · line · bar · scatter · hist · labels, `tight_layout`, `savefig`
+**Seaborn** — `data=` and column names · `hue=` · histplot, boxplot, scatterplot, heatmap,
+countplot · **`barplot` shows the mean, not the sum** · a boxplot *is* the IQR rule, drawn
+
+📁 [`Day-20-Outliers-Matplotlib-Seaborn`](Day-20-Outliers-Matplotlib-Seaborn)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-20-Outliers-Matplotlib-Seaborn/Day20_Outliers_Matplotlib_Seaborn.pdf) · [PowerPoint](Day-20-Outliers-Matplotlib-Seaborn/Day20_Outliers_Matplotlib_Seaborn.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-20-Outliers-Matplotlib-Seaborn/Day20_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-20-Outliers-Matplotlib-Seaborn/Day20_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
+
+---
+
+### Day 21 — Mini project: EDA on a real dataset
+
+A full exploratory data analysis, end to end: load a real file, inspect and clean it, handle
+missing values and outliers, explore with grouping and merging, visualise, and write up the
+findings. Everything from Days 15 to 20 in one piece of work.
+
+*Materials posted on the day.*
 
 ---
 
@@ -466,6 +500,10 @@ a merge instead of a dictionary
 **Day 19** — take a messy CSV and write a cleaning pipeline that prints a receipt · fill one
 column three different ways and compare the mean and std each time · find a dataset where
 dropping the gaps biases the result, and say how
+
+**Day 20** — find the outliers in a dataset by IQR and by z-score and explain any
+disagreement · rebuild the 2×2 overview grid for a dataset of your own · take one chart and
+improve it until a classmate reads it correctly
 
 ---
 
