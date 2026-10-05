@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 20** (Python Basics · OOP · Files · Errors · NumPy · pandas · Cleaning · Visualisation)
+**Covered so far: Day 1 – Day 21** (Python Basics · OOP · Files · Errors · NumPy · pandas · Cleaning · Visualisation · EDA)
 
 ---
 
@@ -408,17 +408,39 @@ countplot · **`barplot` shows the mean, not the sum** · a boxplot *is* the IQR
 | [Slides (PDF)](Day-20-Outliers-Matplotlib-Seaborn/Day20_Outliers_Matplotlib_Seaborn.pdf) · [PowerPoint](Day-20-Outliers-Matplotlib-Seaborn/Day20_Outliers_Matplotlib_Seaborn.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-20-Outliers-Matplotlib-Seaborn/Day20_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-20-Outliers-Matplotlib-Seaborn/Day20_Practice_Questions.ipynb) |
-| Practice solutions | *posted after the practice session* |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-20-Outliers-Matplotlib-Seaborn/Day20_Practice_Solutions.ipynb) |
 
 ---
 
-### Day 21 — Mini project: EDA on a real dataset
+### Day 21 — EDA Mini Project
 
-A full exploratory data analysis, end to end: load a real file, inspect and clean it, handle
-missing values and outliers, explore with grouping and merging, visualise, and write up the
-findings. Everything from Days 15 to 20 in one piece of work.
+A full exploratory data analysis, end to end — everything from Days 15 to 20 in one piece of
+work. **Two projects**: one walked through on screen, one for you to do.
 
-*Materials posted on the day.*
+**The six-step workflow:** load & look → audit → clean → combine → explore → write up.
+
+| | Project | Data | |
+|---|---|---|---|
+| **A** | Retail orders *(walkthrough)* | `orders.csv` 423 rows · `customers.csv` 81 rows | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectA_Walkthrough.ipynb) |
+| **B** | Flight delays *(yours)* | `flights.csv` 502 rows · `airlines.csv` 6 rows | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectB_Questions.ipynb) |
+
+📁 [`Day-21-EDA-Mini-Project`](Day-21-EDA-Mini-Project) · 📊 [`data/`](Day-21-EDA-Mini-Project/data)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-21-EDA-Mini-Project/Day21_EDA_Mini_Project.pdf) · [PowerPoint](Day-21-EDA-Mini-Project/Day21_EDA_Mini_Project.pptx) | |
+| Project A — walkthrough (worked) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectA_Walkthrough.ipynb) |
+| Project B — your project | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectB_Questions.ipynb) |
+| Project B — solutions | *posted after the session* |
+
+**Both datasets are deliberately dirty.** Every problem in them is one covered in Days 15–20:
+sentinel values `isna()` will not flag, inconsistent text, duplicate rows, a key matching
+nothing, and outliers that are **not** errors.
+
+**Submission:** one notebook with the six steps as sections, an audit cell, at least four
+labelled charts, and five written findings — each with *what*, *so what* and the *caveat*.
+Marking: audit 25 · cleaning 25 · analysis 20 · charts 15 · findings 15. **Half the marks are
+for the data work, not the answers.**
 
 ---
 
@@ -504,6 +526,9 @@ dropping the gaps biases the result, and say how
 **Day 20** — find the outliers in a dataset by IQR and by z-score and explain any
 disagreement · rebuild the 2×2 overview grid for a dataset of your own · take one chart and
 improve it until a classmate reads it correctly
+
+**Day 21** — complete Project B and submit the notebook: six labelled steps, an audit cell,
+four or more labelled charts, and five written findings with caveats
 
 ---
 
