@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 21** (Python Basics · OOP · Files · Errors · NumPy · pandas · Cleaning · Visualisation · EDA)
+**Covered so far: Day 1 – Day 24** (Module 1 complete · Module 2: Statistics in progress)
 
 ---
 
@@ -431,7 +431,7 @@ work. **Two projects**: one walked through on screen, one for you to do.
 | [Slides (PDF)](Day-21-EDA-Mini-Project/Day21_EDA_Mini_Project.pdf) · [PowerPoint](Day-21-EDA-Mini-Project/Day21_EDA_Mini_Project.pptx) | |
 | Project A — walkthrough (worked) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectA_Walkthrough.ipynb) |
 | Project B — your project | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectB_Questions.ipynb) |
-| Project B — solutions | *posted after the session* |
+| Project B — solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-21-EDA-Mini-Project/Day21_ProjectB_Solutions.ipynb) |
 
 **Both datasets are deliberately dirty.** Every problem in them is one covered in Days 15–20:
 sentinel values `isna()` will not flag, inconsistent text, duplicate rows, a key matching
@@ -441,6 +441,74 @@ nothing, and outliers that are **not** errors.
 labelled charts, and five written findings — each with *what*, *so what* and the *caveat*.
 Marking: audit 25 · cleaning 25 · analysis 20 · charts 15 · findings 15. **Half the marks are
 for the data work, not the answers.**
+
+---
+
+### Day 22 — Module 1 Assessment
+
+A one-hour proctored online exam covering all of Module 1: Python, pandas, cleaning,
+visualisation and EDA. Randomised per student, auto-marked, score released on submit.
+
+*Exam materials are not published in this repository.*
+
+---
+
+## Module 2 — Statistics & Probability
+
+### Day 23 — Descriptive Statistics
+
+*Topics 2.1–2.3. Where Module 1's `.mean()` and `.std()` finally get explained.*
+
+**Centre** — mean, median, mode · why the mean uses every value while the median only cares
+about order · **in the salary example, 94% of people earn below the average** · `mode()`
+returns a Series, because ties exist
+
+**Spread** — range, IQR, variance, SD · why the average deviation is always zero, so we
+square · **why divide by n − 1: proved by simulation, not algebra** — dividing by `n`
+undershoots the truth by exactly `(n−1)/n`, confirmed at five sample sizes · `ddof=0` for a
+population, `ddof=1` for a sample, and why NumPy and pandas chose different defaults
+
+**Shape** — skewness and kurtosis · two humps can share a mean and SD with one hump ·
+a decision table for choosing the honest summary
+
+📁 [`Day-23-Descriptive-Statistics`](Day-23-Descriptive-Statistics)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-23-Descriptive-Statistics/Day23_Descriptive_Statistics.pdf) · [PowerPoint](Day-23-Descriptive-Statistics/Day23_Descriptive_Statistics.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-23-Descriptive-Statistics/Day23_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-23-Descriptive-Statistics/Day23_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-23-Descriptive-Statistics/Day23_Practice_Solutions.ipynb) |
+
+---
+
+### Day 24 — The Normal Distribution
+
+*Topic 2.4. Where the standard deviation stops describing and becomes a ruler.*
+
+**The curve** — two numbers define it entirely: μ for where, σ for how wide · why it recurs
+(sums of many small independent effects — demonstrated with twelve dice) · and the real
+reason it matters: the **averages** of samples are normal even when the data is not
+
+**68 – 95 – 99.7** — the empirical rule, and its more useful form: beyond 2σ is **1 in 22**,
+beyond 3σ is **1 in 370**
+
+**Z-scores** — `z = (value − μ) / σ` · standardising turns any normal curve into the same one
+· **a lower raw mark can be the better performance, and only z shows it** · `cdf` and `ppf` ·
+**where 1.96 actually comes from**
+
+⚠️ **When it does not apply** — on real salary data the 2σ check passes at 95.0% against a
+predicted 95.4% **by pure coincidence**, while every other check fails badly. One passing
+check is not evidence.
+
+📁 [`Day-24-Normal-Distribution`](Day-24-Normal-Distribution)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-24-Normal-Distribution/Day24_Normal_Distribution.pdf) · [PowerPoint](Day-24-Normal-Distribution/Day24_Normal_Distribution.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-24-Normal-Distribution/Day24_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-24-Normal-Distribution/Day24_Practice_Questions.ipynb) |
+| Practice solutions | *posted after the practice session* |
 
 ---
 
@@ -529,6 +597,14 @@ improve it until a classmate reads it correctly
 
 **Day 21** — complete Project B and submit the notebook: six labelled steps, an audit cell,
 four or more labelled charts, and five written findings with caveats
+
+**Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
+where the mean and median disagree, and explain why · run `honest_summary` on three columns
+of your Day 21 project data
+
+**Day 24** — run `normal_check` on every numeric column of your Day 21 project data and say
+which are normal · find your own two-exam example and compute both z-scores · use `ppf` to
+find the mark that would put a student in the top 5%
 
 ---
 
