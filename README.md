@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 24** (Module 1 complete · Module 2: Statistics in progress)
+**Covered so far: Day 1 – Day 25** (Module 1 complete · Module 2: Statistics in progress)
 
 ---
 
@@ -508,6 +508,47 @@ check is not evidence.
 | [Slides (PDF)](Day-24-Normal-Distribution/Day24_Normal_Distribution.pdf) · [PowerPoint](Day-24-Normal-Distribution/Day24_Normal_Distribution.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-24-Normal-Distribution/Day24_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-24-Normal-Distribution/Day24_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-24-Normal-Distribution/Day24_Practice_Solutions.ipynb) |
+
+---
+
+### Day 25 — Binomial & Poisson
+
+*Topic 2.5. Days 23 and 24 measured quantities. Today we count events — and counts need
+their own distributions.*
+
+**What makes a situation binomial** — four conditions: fixed n · two outcomes · the same p
+every time · independent trials. Three examples that qualify and three that fail, each
+breaking a **different** condition
+
+**The formula, built rather than memorised** — all 8 outcomes of three coin flips written
+out, giving 1 · 3 · 3 · 1 → that is `C(n,k)` → one path is `p³(1−p)²` and every path with the
+same count gives the same product → `C(n,k) × pᵏ × (1−p)ⁿ⁻ᵏ`, worked through by hand for
+7 heads in 10 flips
+
+**Using it** — `pmf` for *exactly*, `cdf` for *at most*, and ⚠️ **`1 − cdf(k−1)` for
+*at least***. The off-by-one that gives 0.0755 instead of 0.2642 — a factor of 3.5, with no
+error message. Mean `np`, sd `√(np(1−p))`
+
+**Poisson** — for a rate with no countable n: calls per hour, typos per page. One number, λ
+— and **λ must match your interval**. A call centre averaging 3 an hour is overwhelmed
+**one hour in five**, which no average could ever tell you
+
+⭐ **mean = variance = λ** — a free diagnostic. If `var/mean` is well above 1 the events are
+clustering and Poisson is the wrong model
+
+**Choosing** — *"out of"* → binomial, *"per"* → Poisson. Then: binomial **becomes** Poisson
+as n grows and p shrinks, and both become Day 24's bell curve
+
+Nine rendered figures, 33 slides, one idea per slide.
+
+📁 [`Day-25-Binomial-Poisson`](Day-25-Binomial-Poisson)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-25-Binomial-Poisson/Day25_Binomial_Poisson.pdf) · [PowerPoint](Day-25-Binomial-Poisson/Day25_Binomial_Poisson.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-25-Binomial-Poisson/Day25_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-25-Binomial-Poisson/Day25_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -601,6 +642,10 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 25** — write out all 16 outcomes of 4 coin flips and check they give `C(4,k)` · find
+three situations at your own workplace or studies, one binomial and one Poisson, and say which
+condition decided it · redo the staffing build with λ = 8
 
 **Day 24** — run `normal_check` on every numeric column of your Day 21 project data and say
 which are normal · find your own two-exam example and compute both z-scores · use `ppf` to
