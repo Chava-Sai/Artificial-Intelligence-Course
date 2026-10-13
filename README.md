@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 25** (Module 1 complete · Module 2: Statistics in progress)
+**Covered so far: Day 1 – Day 27** (Module 1 complete · Module 2: Statistics in progress)
 
 ---
 
@@ -549,6 +549,101 @@ Nine rendered figures, 33 slides, one idea per slide.
 | [Slides (PDF)](Day-25-Binomial-Poisson/Day25_Binomial_Poisson.pdf) · [PowerPoint](Day-25-Binomial-Poisson/Day25_Binomial_Poisson.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-25-Binomial-Poisson/Day25_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-25-Binomial-Poisson/Day25_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-25-Binomial-Poisson/Day25_Practice_Solutions.ipynb) |
+
+---
+
+### Day 26 — The Uniform Distribution
+
+*Topic 2.6. The simplest distribution there is, and the one every other one is built from.*
+
+**Discrete uniform** — n outcomes, each 1/n. Mean (a+b)/2, variance (n²−1)/12 · and the
+three-library bounds trap: `scipy` and `numpy` exclude the top value, Python's own `random`
+includes it, and none of them errors when you get it wrong
+
+⭐ **Probability becomes AREA** — the idea that separates continuous from discrete. A range has
+an area and therefore a probability; a single point has zero width, so **P(X = any exact
+value) = 0** — which is not the same as impossible, because no instrument ever measured
+anything to infinite precision
+
+⚠️ **A density is not a probability** — U(0, 0.1) has a height of **10**. Density is
+probability *per unit of x*, like a price per kilo, and `pdf()` never returns a probability
+
+⚠️ **The scipy trap** — `uniform` takes loc and **width**, not two endpoints. `U(a,b)` is
+`uniform(a, b−a)`. Get it wrong and you get a silently wrong upper bound
+
+**Is it really uniform?** — same range and same mean do **not** make it uniform; only the shape
+does · `chisquare` for discrete, `kstest` for continuous · and a die that lands on 6 twice as
+often as it should is caught by 60 rolls only **40%** of the time
+
+**Benford's law** — leading digits of real data are nowhere near uniform; 1 appears **2.7×**
+as often as "random" would give. It is how auditors spot invented numbers
+
+**The foundation** — every random number your computer makes is U(0,1), reshaped. Inverse
+transform sampling builds a normal, an exponential and a loaded die from one flat line
+
+**One uniform is flat. Twelve added together are a bell curve** — the third unexplained
+appearance of the normal in three sessions
+
+Thirteen rendered figures, 33 slides, one idea per slide.
+
+📁 [`Day-26-Uniform-Distribution`](Day-26-Uniform-Distribution)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-26-Uniform-Distribution/Day26_Uniform_Distribution.pdf) · [PowerPoint](Day-26-Uniform-Distribution/Day26_Uniform_Distribution.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-26-Uniform-Distribution/Day26_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-26-Uniform-Distribution/Day26_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-26-Uniform-Distribution/Day26_Practice_Solutions.ipynb) |
+
+---
+
+### Day 27 — The Central Limit Theorem
+
+*Topic 2.7. Three sessions have ended with an unexplained bell curve. This is the explanation,
+and the result the rest of the module rests on.*
+
+⭐ **The one distinction** — your **data** and your **sample mean** are two different
+distributions, and almost every mistake in this topic comes from confusing them. The theorem is
+about the mean. ⚠️ It says nothing about your data, which stays exactly as skewed as it always
+was — a million salaries are no more normal than a hundred
+
+**The theorem** — sample means are normal, centred on μ, with sd **σ/√n**, from *any*
+population with a finite σ. Demonstrated on an exponential, a bimodal, a uniform and a lumpy
+three-valued population — including an honest look at the one where n = 30 is visibly not
+enough
+
+**σ vs the standard error** — σ describes people and never shrinks; SE describes the average and
+shrinks as √n. **4× the data buys 2× the precision**, which is a budget, not a detail
+
+⚠️ **"n = 30 is enough" is simply not true** — measured coverage of a "95%" interval at n = 30:
+normal 94%, uniform 94%, exponential 91%, **lognormal 87%**. And lognormal is what income,
+spend, file size and session length all look like. Even n = 500 only reaches 94%
+
+**The rule that actually works** — skew of the mean = population skew / √n, *exactly*. So
+**n ≈ (skew / 0.3)²** — with the honest caveat that a skew estimate from a small sample is both
+noisy and biased low
+
+⚠️ **Two ways it fails** — **infinite variance** (a Cauchy mean has the same spread at n = 1 and
+n = 10,000; collecting more data buys nothing) and **dependence** (100 correlated readings were
+worth 11 independent ones, making every interval 4× too narrow)
+
+**What it buys you** — a worked confidence interval on average customer spend, where a normality
+test on the data fails at p = 4e-18 and the interval is correct anyway · what "95% confident"
+does and does not mean · and an honest measurement that n = 200 gives 92% coverage, not 95%
+
+The practice notebook ends by building a bootstrap and finding it barely helps — which is the
+intended lesson.
+
+Twelve rendered figures, 30 slides, one idea per slide.
+
+📁 [`Day-27-Central-Limit-Theorem`](Day-27-Central-Limit-Theorem)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-27-Central-Limit-Theorem/Day27_Central_Limit_Theorem.pdf) · [PowerPoint](Day-27-Central-Limit-Theorem/Day27_Central_Limit_Theorem.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-27-Central-Limit-Theorem/Day27_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-27-Central-Limit-Theorem/Day27_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -642,6 +737,15 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 27** — run `clt_check` on every numeric column of your Day 21 project and say which ones
+you could safely build an interval from · find a published ± figure and work out what n it
+implies · take one skewed column and find the n its skew actually demands
+
+**Day 26** — build a sampler for a distribution scipy does not have, using only
+`rng.random()` · take any numeric column from your Day 21 project and test whether its leading
+digits follow Benford · find one place in your own code where you assumed uniform without
+checking
 
 **Day 25** — write out all 16 outcomes of 4 coin flips and check they give `C(4,k)` · find
 three situations at your own workplace or studies, one binomial and one Poisson, and say which
