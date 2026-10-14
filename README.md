@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 27** (Module 1 complete · Module 2: Statistics in progress)
+**Covered so far: Day 1 – Day 28** (Module 1 complete · Module 2: Statistics in progress)
 
 ---
 
@@ -644,6 +644,56 @@ Twelve rendered figures, 30 slides, one idea per slide.
 | [Slides (PDF)](Day-27-Central-Limit-Theorem/Day27_Central_Limit_Theorem.pdf) · [PowerPoint](Day-27-Central-Limit-Theorem/Day27_Central_Limit_Theorem.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-27-Central-Limit-Theorem/Day27_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-27-Central-Limit-Theorem/Day27_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-27-Central-Limit-Theorem/Day27_Practice_Solutions.ipynb) |
+
+---
+
+### Day 28 — Hypothesis Testing
+
+*Topic 2.8. The maths is small — it is yesterday's standard error with a decision rule bolted
+on. The misuse is enormous, and that is what the session is actually about.*
+
+**The logic** — assume nothing is happening, then measure how surprising the data is.
+`t = (what we saw − what we expected) / SE`. A full worked paired t-test, reported the way it
+should be: effect, interval, effect size, exact p
+
+**What a p-value is** — under the null it is **uniform**, which is why 5% of nothing looks like
+something. ⚠️ And the four misreadings: it is *not* the chance the null is true, *not* the
+chance you are right, *not* evidence of no effect, and *not* a measure of importance
+
+⚠️ **p = 0.049 vs p = 0.051** — a difference of **0.017** in the test statistic separates a
+discovery from a file drawer
+
+⚠️ **scipy's default two-sample test is the wrong one** — `equal_var=True` fires **44%** of the
+time on data with no effect when the smaller group has the larger variance. The fix is one
+argument
+
+⚠️ **Paired data** — the same example goes from **0%** detection to **98%** by using
+`ttest_rel`. The largest single gain from a design choice in the whole module
+
+**Power** — 80% needs n = 25, 63 or 393 per group depending on the effect size. ⚠️ And "not
+significant" ≠ "no effect": a wide interval around zero means you learned nothing, a narrow one
+means you learned something real
+
+⚠️ **How it goes wrong** — 20 tests → **64%** chance of a false positive · peeking as data
+arrives → **16%** · adding four subgroups → **20%** · and the base rate: if 5% of your
+hypotheses are true, **fewer than half** your "significant" findings are
+
+**What to report instead** — the effect size, a confidence interval, the test and n, the exact
+p, and **how many tests you ran**. The last one is the only one that takes courage.
+
+The practice notebook asks you to p-hack a null dataset on purpose, then write the honest
+version of the same report.
+
+Twelve rendered figures, 31 slides, one idea per slide.
+
+📁 [`Day-28-Hypothesis-Testing`](Day-28-Hypothesis-Testing)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-28-Hypothesis-Testing/Day28_Hypothesis_Testing.pdf) · [PowerPoint](Day-28-Hypothesis-Testing/Day28_Hypothesis_Testing.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-28-Hypothesis-Testing/Day28_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-28-Hypothesis-Testing/Day28_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -737,6 +787,10 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 28** — find a published claim with a p-value and work out what is missing from the
+report · take any two groups in your Day 21 project and compare them properly, reporting all
+five things · work out what power your comparison had
 
 **Day 27** — run `clt_check` on every numeric column of your Day 21 project and say which ones
 you could safely build an interval from · find a published ± figure and work out what n it
