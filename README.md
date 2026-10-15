@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 28** (Module 1 complete · Module 2: Statistics in progress)
+**Covered so far: Day 1 – Day 29** (Module 1 complete · Module 2: Statistics in progress)
 
 ---
 
@@ -694,6 +694,61 @@ Twelve rendered figures, 31 slides, one idea per slide.
 | [Slides (PDF)](Day-28-Hypothesis-Testing/Day28_Hypothesis_Testing.pdf) · [PowerPoint](Day-28-Hypothesis-Testing/Day28_Hypothesis_Testing.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-28-Hypothesis-Testing/Day28_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-28-Hypothesis-Testing/Day28_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-28-Hypothesis-Testing/Day28_Practice_Solutions.ipynb) |
+
+---
+
+### Day 29 — Correlation
+
+*Topic 2.9. Everybody already knows the slogan. Almost nobody can name the four reasons two
+things move together, and that gap is what the session is for.*
+
+**What r measures** — how tightly a cloud hugs a **straight** line, and nothing else.
+⚠️ **r is not a slope:** four datasets with fitted slopes from **0.09 to 90** all returned
+**r = 0.697**. And `r²` is the number that keeps you honest — r = 0.3 is **9%** of the
+variation
+
+⭐ **Anscombe's quartet** — four datasets with the same mean, the same sd, the same regression
+line and **r = 0.816**, and four completely different pictures. The habit that follows is
+non-negotiable: **plot it**
+
+⚠️ **r only sees straight lines** — a perfect U, a wave, an X and a ring, every one of them a
+near-deterministic relationship, all returning **r under 0.07**. Dose–response curves live
+here. **Spearman** fixes monotonic curves and outliers; it does *not* fix a U-shape
+
+⚠️ **One point** — a single typo turned **r = −0.14 into r = +0.64** with p = 4.7e-13, and a
+genuine **r = 0.96 into −0.20**. Spearman barely moved in either case, which makes the gap
+between the two coefficients the cheapest outlier detector there is
+
+**How well do you know r?** — r = 0.50 from **n = 10** has a 95% interval of **−0.19 to
++0.86**: it contains zero *and* almost perfect. ⚠️ At the other end, n = 100,000 makes
+**r = 0.006** significant, explaining **0.004%** of the variance
+
+⚠️ **The five explanations** — chance · **confounding** (ice cream and drownings, r = 0.82,
+falling to 0.05 once temperature is held still) · **reverse causation** · **selection**, where
+two genuinely independent variables correlated at **−0.73** among the people who were chosen ·
+and only then, cause
+
+⚠️ **Simpson's paradox** — women admitted at a higher rate in **every** department and a lower
+rate **overall** (34.3% vs 55.0%), from one table with no arithmetic error in it
+
+⚠️ **`df.corr()` on 20 columns is 190 hypothesis tests.** On pure noise, seven came back
+p < 0.05 and the strongest reached r = 0.45, p = 0.003. The Bonferroni threshold is 0.00026
+and nothing survived it, correctly
+
+The session ends with a six-question checklist, three questions of which cannot be answered
+from the data at all. The practice notebook asks you to manufacture a finding out of nothing,
+then diagnose which of the five explanations a real-looking correlation actually is.
+
+Thirteen rendered figures, 31 slides, one idea per slide.
+
+📁 [`Day-29-Correlation`](Day-29-Correlation)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-29-Correlation/Day29_Correlation.pdf) · [PowerPoint](Day-29-Correlation/Day29_Correlation.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-29-Correlation/Day29_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-29-Correlation/Day29_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -787,6 +842,11 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 29** — run `correlate()` on three pairs of columns from your Day 21 project and
+report all five numbers · find a news headline built on a correlation and work the
+six-question checklist on it · take one correlation you believe is causal and name the
+specific confounder you would need to rule out
 
 **Day 28** — find a published claim with a p-value and work out what is missing from the
 report · take any two groups in your Day 21 project and compare them properly, reporting all
