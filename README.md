@@ -5,7 +5,9 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 29** (Module 1 complete · Module 2: Statistics in progress)
+**Covered so far: Day 1 – Day 30** (Module 1 complete · **Module 2 complete**)
+
+*Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
 ---
 
@@ -514,7 +516,7 @@ check is not evidence.
 
 ### Day 25 — Binomial & Poisson
 
-*Topic 2.5. Days 23 and 24 measured quantities. Today we count events — and counts need
+*Topics 2.5–2.6. Days 23 and 24 measured quantities. Today we count events — and counts need
 their own distributions.*
 
 **What makes a situation binomial** — four conditions: fixed n · two outcomes · the same p
@@ -555,7 +557,7 @@ Nine rendered figures, 33 slides, one idea per slide.
 
 ### Day 26 — The Uniform Distribution
 
-*Topic 2.6. The simplest distribution there is, and the one every other one is built from.*
+*Topic 2.6 (continued). The simplest distribution there is, and the one every other one is built from.*
 
 **Discrete uniform** — n outcomes, each 1/n. Mean (a+b)/2, variance (n²−1)/12 · and the
 three-library bounds trap: `scipy` and `numpy` exclude the top value, Python's own `random`
@@ -600,7 +602,7 @@ Thirteen rendered figures, 33 slides, one idea per slide.
 
 ### Day 27 — The Central Limit Theorem
 
-*Topic 2.7. Three sessions have ended with an unexplained bell curve. This is the explanation,
+*Topic 2.10. Three sessions have ended with an unexplained bell curve. This is the explanation,
 and the result the rest of the module rests on.*
 
 ⭐ **The one distinction** — your **data** and your **sample mean** are two different
@@ -650,7 +652,7 @@ Twelve rendered figures, 30 slides, one idea per slide.
 
 ### Day 28 — Hypothesis Testing
 
-*Topic 2.8. The maths is small — it is yesterday's standard error with a decision rule bolted
+*Topics 2.11–2.13. The maths is small — it is yesterday's standard error with a decision rule bolted
 on. The misuse is enormous, and that is what the session is actually about.*
 
 **The logic** — assume nothing is happening, then measure how surprising the data is.
@@ -700,7 +702,7 @@ Twelve rendered figures, 31 slides, one idea per slide.
 
 ### Day 29 — Correlation
 
-*Topic 2.9. Everybody already knows the slogan. Almost nobody can name the four reasons two
+*Topic 2.17. Everybody already knows the slogan. Almost nobody can name the four reasons two
 things move together, and that gap is what the session is for.*
 
 **What r measures** — how tightly a cloud hugs a **straight** line, and nothing else.
@@ -749,6 +751,69 @@ Thirteen rendered figures, 31 slides, one idea per slide.
 | [Slides (PDF)](Day-29-Correlation/Day29_Correlation.pdf) · [PowerPoint](Day-29-Correlation/Day29_Correlation.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-29-Correlation/Day29_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-29-Correlation/Day29_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-29-Correlation/Day29_Practice_Solutions.ipynb) |
+
+---
+
+### Day 30 — A/B Test Design & Analysis
+
+*Topic 2.19. The last statistics session, and the only one in the whole module where you are
+allowed to say "caused". Everything from Day 23 onwards gets used here at once.*
+
+⭐ **Randomisation is the entire trick** — the same users give a **+21** effect
+observationally and **+2.4** when a coin decides the arm (true effect: +2.0). A coin flip
+switches off **confounding, reverse causation and selection** simultaneously, and leaves only
+chance — which is what the rest of the module taught you to handle
+
+**Three decisions before launch** — the **unit** (the user, never the pageview), **one**
+primary metric, and the size
+
+**Sizing** — `n_per_arm(p0, mde)` in one line, cross-checked against statsmodels.
+Baseline 10%, catching **+1pp** → **14,751 per arm**, 7.4 days. ⚠️ Halve the effect you want
+to catch and the cost **roughly quadruples**: +0.5pp needs 57,763 per arm and a month
+
+⚠️ **The winner's curse** — with a true lift of +1.00pp, an 11%-power test reports **+3.32pp**
+among the tests that "win", with a significant p-value attached. A properly powered test
+overstates by only 1.12×. **Power is not just about finding effects, it is about measuring
+them**
+
+⚠️ **Peeking** — checking the dashboard 20 times before the planned end turns a 5%
+false-positive rate into **25%**, on data with no effect in it
+
+⚠️ **Sample ratio mismatch** — a 51.5/48.5 split on 40,000 users is **p = 2e-09**. That is a
+bug, not bad luck, and it invalidates the whole test. One line of chi-square, and it is the
+highest-value check in the process
+
+⚠️ **Novelty and weekends** — day 1 reads **+1.79pp**; by day 14 the daily lift is **+0.02pp**
+and the cumulative figure still reads +0.45pp. The baseline itself swings **2.1pp** between
+weekdays and weekends. Run whole weeks, and plot the daily lift, not just the cumulative one
+
+⚠️ **Revenue metrics** — the common claim that heavy tails break the t-test is wrong: the
+false-positive rate measured **3–4%**, slightly conservative. The real damage is to power. A
+**real +10% lift** has **9%** power at n = 1,000 (the same lift on a well-behaved metric: 96%).
+Capping the top 1% in advance takes power at n = 20,000 from 56% to **94%**
+
+⚠️ **Segments** — slicing a flat test eight ways gives a **34%** chance of a fake winner
+
+**Deciding** — three non-significant tests, and only one of them tells you anything. The
+decision comes from where the **interval** sits relative to a **ship threshold**, never from
+the p-value. "Not significant" ≠ "no effect"
+
+A full worked example end to end — plan, SRM check, analysis, secondary metric, decision, and
+the eighty-word report that contains everything a reader needs.
+
+The practice notebook has you audit a real-looking write-up with four separate things wrong
+with it, and design a test from a business brief.
+
+Ten rendered figures, 30 slides, 209 verified assertions.
+
+📁 [`Day-30-AB-Testing`](Day-30-AB-Testing)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-30-AB-Testing/Day30_AB_Testing.pdf) · [PowerPoint](Day-30-AB-Testing/Day30_AB_Testing.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-30-AB-Testing/Day30_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-30-AB-Testing/Day30_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -842,6 +907,11 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 30** — write a one-page test plan for a change you would actually make (unit, primary
+metric, MDE, n per arm, end date) · find a published A/B result and work out what is missing
+from the report · take a feature you believe works and name the smallest lift that would
+justify building it
 
 **Day 29** — run `correlate()` on three pairs of columns from your Day 21 project and
 report all five numbers · find a news headline built on a correlation and work the
