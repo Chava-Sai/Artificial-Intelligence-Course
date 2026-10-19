@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 30** (Module 1 complete · **Module 2 complete**)
+**Covered so far: Day 1 – Day 31** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -814,6 +814,77 @@ Ten rendered figures, 30 slides, 209 verified assertions.
 | [Slides (PDF)](Day-30-AB-Testing/Day30_AB_Testing.pdf) · [PowerPoint](Day-30-AB-Testing/Day30_AB_Testing.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-30-AB-Testing/Day30_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-30-AB-Testing/Day30_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-30-AB-Testing/Day30_Practice_Solutions.ipynb) |
+
+---
+
+## Module 3 — Machine Learning
+
+### Day 31 — What Machine Learning Is
+
+*Topics 3.1 + 3.2. The first ML session. Nothing is assumed, every term is defined when it
+first appears, and every claim is measured rather than asserted.*
+
+⭐ **The paradigm flip** — traditional code is **rules + data → answers**; machine learning is
+**data + answers → rules**. Drawn side by side, because that swap is the whole definition
+
+**The vocabulary** — sample (a row) · feature (an input column, X) · label (the answer
+column, y) · model · training. Annotated on a real table
+
+⭐ **What "learning" means** — a model is numbers you can change plus a measure of
+wrongness. We find the best slope by brute force and plot the error curve, so there is no
+magic left in it. **Gradient descent is Day 35's job**, and it is the same idea with a
+smarter way downhill
+
+**The three kinds, side by side** — supervised (the answers come with the data),
+unsupervised (no answers — cluster the rows or shrink the columns), reinforcement (no
+answers, but the world pays a reward). Plus **regression vs classification**, a decision
+table for *"which kind is my problem?"*, and a map of every algorithm in the module
+
+**The pipeline** — eight steps, with today's two marked. Steps 1–3 are most of a real
+project; step 5 is often three lines
+
+⚠️ **Train and test** — an unrestricted decision tree scored **R² = 1.000** on its training
+data and **−0.628** on held-out data: *worse than ignoring the data and guessing the
+average*. That is **overfitting**, and it is the central problem of the module
+
+⚠️ **Why a model cannot read "Boston"** — every model multiplies its inputs by weights, so
+there is no value for `"Boston" × 0.4`. Live `ValueError` and all
+
+⚠️ **Label encoding a nominal column DOUBLED the error** on 600 houses: $11,150 → $23,330.
+Same data, same model, only the encoding changed
+
+**One-hot encoding** — one yes/no column per category, no invented order. Shown step by
+step, then verified: it recovered all five true city effects to within a few thousand
+dollars
+
+**The dummy variable trap, honestly** — it does **not** break predictions in scikit-learn
+(we measured: identical to four decimal places). It breaks **interpretation** and classical
+OLS. Use `drop_first=True` when you will read coefficients
+
+**Ordinal encoding** — right when the order is real *and the gaps are even*: it ties one-hot
+(4.98 vs 4.97) with a quarter of the columns. With **uneven** gaps it is 30% worse (6.04 vs
+4.64). "There is an order" is not enough on its own
+
+⚠️ **High cardinality** — 565 zip codes from 1,000 rows means 565 columns, and the model
+memorises. Group the rare ones
+
+⚠️ **Leakage** — fitting a target encoder before the split reported a **test R² of +0.38 on
+data containing no signal at all**, while the correct version reported −0.54. *The honest
+answer looks like failure and the leaky one looks like success*
+
+The practice notebook ends by handing you a data-preparation function with **four separate
+bugs** that runs cleanly and prints a respectable score.
+
+Sixteen drawn figures, 34 slides, 156 verified assertions.
+
+📁 [`Day-31-Intro-to-ML`](Day-31-Intro-to-ML)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-31-Intro-to-ML/Day31_Intro_to_ML.pdf) · [PowerPoint](Day-31-Intro-to-ML/Day31_Intro_to_ML.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-31-Intro-to-ML/Day31_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-31-Intro-to-ML/Day31_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the practice session* |
 
 ---
@@ -907,6 +978,10 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 31** — take your Day 21 dataset and label every column numeric / nominal / ordinal ·
+say what a supervised problem on it would predict, and whether that is regression or
+classification · run `prepare()` on it and report the shape before and after
 
 **Day 30** — write a one-page test plan for a change you would actually make (unit, primary
 metric, MDE, n per arm, end date) · find a published A/B result and work out what is missing
