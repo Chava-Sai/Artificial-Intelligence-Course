@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 31** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
+**Covered so far: Day 1 – Day 33** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -822,70 +822,211 @@ Ten rendered figures, 30 slides, 209 verified assertions.
 
 ### Day 31 — What Machine Learning Is
 
-*Topics 3.1 + 3.2. The first ML session. Nothing is assumed, every term is defined when it
-first appears, and every claim is measured rather than asserted.*
+*Topics 3.1 + 3.2. The first machine learning session, rebuilt from zero. Nothing is
+assumed — no earlier maths, no earlier Python. One idea per slide, a picture on every one,
+and every claim measured rather than stated.*
 
-⭐ **The paradigm flip** — traditional code is **rules + data → answers**; machine learning is
-**data + answers → rules**. Drawn side by side, because that swap is the whole definition
+**You already use this, several times a day** — the deck opens with six things students
+already rely on (spam filtering, YouTube suggestions, face unlock, Maps, fraud alerts,
+keyboard predictions) and the point that nobody wrote the rules for any of them
 
-**The vocabulary** — sample (a row) · feature (an input column, X) · label (the answer
-column, y) · model · training. Annotated on a real table
+⭐ **Try to write a spam filter by hand, and watch it fail** — one rule tested on six real
+emails, with a tick or a cross on each row. **4 right out of 6** — and both failures are
+honest messages sent to the spam folder, which is the worst mistake you can make
 
-⭐ **What "learning" means** — a model is numbers you can change plus a measure of
-wrongness. We find the best slope by brute force and plot the error curve, so there is no
-magic left in it. **Gradient descent is Day 35's job**, and it is the same idea with a
-smarter way downhill
+⭐ **The flip, in one diagram** — ordinary programming takes rules + data and produces
+answers; machine learning takes data + answers and produces the rules. Same three things,
+arrows reversed. That is the entire definition
 
-**The three kinds, side by side** — supervised (the answers come with the data),
-unsupervised (no answers — cluster the rows or shrink the columns), reinforcement (no
-answers, but the world pays a reward). Plus **regression vs classification**, a decision
-table for *"which kind is my problem?"*, and a map of every algorithm in the module
+**The vocabulary on a real table** — sample, feature, label, model, annotated directly on
+four laptops with their prices
 
-**The pipeline** — eight steps, with today's two marked. Steps 1–3 are most of a real
-project; step 5 is often three lines
+⭐ **What "learning" actually is** — five phones, their RAM and their price. Three attempts
+at a model with the error bars drawn each time: **254 → 14 → 1.2**. No mystery, just two
+numbers being nudged until the error shrinks
 
-⚠️ **Train and test** — an unrestricted decision tree scored **R² = 1.000** on its training
-data and **−0.628** on held-out data: *worse than ignoring the data and guessing the
-average*. That is **overfitting**, and it is the central problem of the module
+⚠️ **The most important rule, measured** — a decision tree scored a **perfect 1.000** on
+the rows it studied and **0.644** on rows it had never seen. A straight line scored 0.925
+and 0.840. One memorised, one learned, and only hiding rows revealed the difference
 
-⚠️ **Why a model cannot read "Boston"** — every model multiplies its inputs by weights, so
-there is no value for `"Boston" × 0.4`. Live `ValueError` and all
+**The three families** — supervised, unsupervised and reinforcement, told apart by one
+question: *do we already have the answers?* Then regression vs classification, a decision
+chart for naming any problem, and six real problems worked through
 
-⚠️ **Label encoding a nominal column DOUBLED the error** on 600 houses: $11,150 → $23,330.
-Same data, same model, only the encoding changed
+⚠️ **Why a model cannot read "Dell"** — a live `ValueError`, and the reason: every model
+multiplies its inputs, and there is no answer to "Dell × 0.4"
 
-**One-hot encoding** — one yes/no column per category, no invented order. Shown step by
-step, then verified: it recovered all five true city effects to within a few thousand
-dollars
+⚠️ **Numbering categories invents an order that is not there** — Apple=0 … Lenovo=4 tells
+the model that Lenovo is four times Apple and that HP sits halfway between Dell and
+Lenovo. Measured on **600 laptops**: the average error **tripled, from ₹3,340 to ₹10,240**,
+and the score fell from 0.960 to 0.642. Same data, same model — only the encoding changed
 
-**The dummy variable trap, honestly** — it does **not** break predictions in scikit-learn
-(we measured: identical to four decimal places). It breaks **interpretation** and classical
-OLS. Use `drop_first=True` when you will read coefficients
+**One-hot encoding, built step by step** — one yes/no column per category, exactly one 1
+per row, and no category bigger than any other
 
-**Ordinal encoding** — right when the order is real *and the gaps are even*: it ties one-hot
-(4.98 vs 4.97) with a quarter of the columns. With **uneven** gaps it is 30% worse (6.04 vs
-4.64). "There is an order" is not enough on its own
+**When numbering IS correct** — Small/Medium/Large has a real order, and on 500 coffee
+orders numbering ties one-hot exactly (₹5.25 either way) using **one column instead of
+three**. The test is one sentence: *is one of these genuinely MORE than another?*
 
-⚠️ **High cardinality** — 565 zip codes from 1,000 rows means 565 columns, and the model
-memorises. Group the rare ones
+⚠️ **When one-hot goes wrong** — 900 delivery rows with 426 different pincodes becomes
+**426 new columns**. The model stops learning and starts memorising: **+0.561** on studied
+rows, **−0.494** on new ones, which is worse than guessing
 
-⚠️ **Leakage** — fitting a target encoder before the split reported a **test R² of +0.38 on
-data containing no signal at all**, while the correct version reported −0.54. *The honest
-answer looks like failure and the leaky one looks like success*
+The practice set ends by handing you a dataset with **four separate things wrong with it**
+— and asks you to write a reusable checker that catches them.
 
-The practice notebook ends by handing you a data-preparation function with **four separate
-bugs** that runs cleanly and prints a respectable score.
-
-Sixteen drawn figures, 34 slides, 156 verified assertions.
+Fifteen drawn figures, 35 slides, 83 verified assertions.
 
 📁 [`Day-31-Intro-to-ML`](Day-31-Intro-to-ML)
 
 | File | |
 |---|---|
-| [Slides (PDF)](Day-31-Intro-to-ML/Day31_Intro_to_ML.pdf) · [PowerPoint](Day-31-Intro-to-ML/Day31_Intro_to_ML.pptx) | |
+| [Slides (PDF)](Day-31-Intro-to-ML/Day31_What_Machine_Learning_Is.pdf) · [PowerPoint](Day-31-Intro-to-ML/Day31_What_Machine_Learning_Is.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-31-Intro-to-ML/Day31_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-31-Intro-to-ML/Day31_Practice_Questions.ipynb) |
-| Practice solutions | *posted after the practice session* |
+| Practice answers | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-31-Intro-to-ML/Day31_Practice_Solutions.ipynb) |
+
+---
+
+### Day 32 — Feature Scaling and Feature Engineering
+
+*Topics 3.3 + 3.4. Before a model can learn anything, the columns have to be in a shape it
+can read. This session is about that shape — and about the one mistake that makes a useless
+model look brilliant.*
+
+⭐ **Why scale at all** — distance has no idea that one room is a big difference and twenty
+square feet is nothing. Shown on a query point where the **nearest neighbour literally
+flips**: raw, the 5-rooms-different house wins; scaled, the identical-rooms house wins
+
+⭐ **The loss surface, drawn** — equal scales make a round bowl and gradient descent walks
+straight to the bottom. Unequal scales stretch it into a **narrow canyon** and the steps
+bounce off the walls. Contour plots of both, with the actual path overlaid
+
+⭐ **Gradient descent, step by step** — the formula written out, then the arithmetic of a
+single step done by hand before any code runs. Measured: **23 iterations on scaled data,
+versus never in 50,000 on raw data** at every learning rate that does not explode
+
+**Who actually needs it** — kNN, SVM, PCA, k-means, neural networks and anything
+regularised: **yes**. Decision trees and forests: **no, never**, and we measure a change of
+exactly 0.000 to prove it. Linear and logistic regression: scale them for **speed,
+regularisation fairness and readable coefficients** — *not* for accuracy, which barely moves
+
+**The three scalers, worked by hand** — the same six numbers through `StandardScaler`
+(z-score), `MinMaxScaler` and `RobustScaler`, formula and arithmetic shown for each
+
+⚠️ **What one outlier does to each** — 200 among five normal values: min-max squeezes the
+real points into a **spread of 0.21 inside a fixed [0,1] box**, standard leaves 0.62,
+robust leaves the full 1.60 and simply reports the outlier at +6.6
+
+⭐ **Feature engineering** — a model can add columns together but it cannot divide one by
+another. A ratio built from two columns the model **already had** moved R² from **0.42 to
+0.94** on one dataset — and moved it by **0.001 on another**, because the target was already
+linear. The lesson is to *measure every feature*, not to perform the ritual
+
+**Dates, ratios, logs, interactions** — four recipes with worked examples, plus the rule
+that a raw timestamp is never a feature: what matters is *time since*, the month, the
+weekday
+
+⚠️ **Too many features** — adding 120 columns of pure noise to a working model, averaged
+over 20 runs, so you can watch test performance fall away while training performance rises.
+Then filter / wrapper / embedded selection, and when to reach for each
+
+⚠️ **The leak that matters most** — the four kinds, ranked by what they actually cost:
+a leaked **scaler** moved accuracy by **+0.006** (one prediction out of 180 — a bad habit,
+small damage); a leaked **selector** turned a dataset of **pure coin-flip noise into 77.5%
+accuracy** against an honest 55.8%. Same keystroke, twenty times the damage
+
+⭐ **Target leakage, the one no Pipeline can catch** — the practice set hands you a fraud
+detector scoring **99.9%** with a perfectly constructed Pipeline, and asks you to work out
+why it is worthless. Three of its eight columns are recorded *after* the fraud is
+discovered. Rebuilt honestly it scores 0.868 against a 0.820 do-nothing baseline, and
+catches **41% of fraud** — the number that actually matters
+
+**The fix, every time** — one `ColumnTransformer` + `Pipeline` that scales numbers, one-hot
+encodes words, selects features and fits the model, with every step refitted inside every
+fold. It survives an unseen category at predict time, and it cannot leak by construction
+
+Fifteen drawn figures, 35 slides, 94 verified assertions.
+
+📁 [`Day-32-Scaling-and-Features`](Day-32-Scaling-and-Features)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-32-Scaling-and-Features/Day32_Scaling_and_Features.pdf) · [PowerPoint](Day-32-Scaling-and-Features/Day32_Scaling_and_Features.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Practice_Solutions.ipynb) |
+
+---
+
+### Day 33 — Simple Linear Regression
+
+*Topic 3.5. Your first machine learning model, built from zero. Nothing is assumed — no
+earlier maths, no earlier Python. One idea per slide, and a picture on every single one.*
+
+**The whole idea in one diagram** — what we have, what we build, what we ask, and the
+answer that comes out
+
+**A line is just two numbers** — where it starts and how steep it is. Drawn with the rise
+and run labelled directly on the chart
+
+**Which line should we draw?** — four candidate lines through the same five students, and
+the realisation that "my eye likes this one" is not a rule a computer can follow
+
+⭐ **Measuring how wrong a line is** — the error on ONE student drawn large and clear.
+Then the discovery that **adding the errors up is useless**: a good line and a terrible
+upside-down line both score exactly zero, because plus and minus cancel
+
+⭐ **Least squares, drawn literally** — every error turned into an actual square on the
+chart, so you can see the total area shrink from **103 to 1.9** as the line improves.
+That picture is where the name comes from
+
+**Why squaring is the right choice** — one miss of 10 costs five times as much as five
+misses of 2, which is exactly the judgement you want
+
+⭐ **The recipe, in five plain steps** — find two averages, build two columns, add them up,
+divide once, subtract once. Then **worked by hand** on five students with whole numbers
+(Sxy = 41, Sxx = 10 → slope 4.1, intercept 47.7), and confirmed in three lines of Python
+
+**Where the formula comes from** — a clearly-marked *optional* slide, four short sentences.
+You never need it to use the recipe
+
+**Reading the result** — say the slope with its units ("each extra square foot adds about
+$2"), never as a bare number. When the starting point is meaningful and when it is
+nonsense, shown side by side on two real datasets
+
+⚠️ **Never predict beyond your data** — the model happily answers **$8,914** for a
+4,000 sq ft flat, having never seen one above 1,426
+
+⭐ **R-squared explained as a comparison** — two pictures side by side: the fat error bars
+you get from guessing the average, and the almost-invisible ones you get from the line.
+The score is just the ratio
+
+**And the number R-squared cannot give you** — "we are typically off by about $178" is what
+a non-technical reader can actually judge
+
+⚠️ **Three ways to be fooled**, each with its own picture:
+a **good score hiding a completely wrong model** (a straight line through a curve, caught
+only by the error plot); the **error patterns** to look for — curve, funnel, stray point;
+and **one point far out to the side** dragging a slope from 1.99 down to 0.47 while ten
+honest points watched
+
+**The five-step routine** — LOOK → FIT → READ → SCORE → CHECK, as a workflow strip, with
+the reason for each step
+
+The practice set ends by asking you to **write the recipe into your own function**, then
+hands you a model scoring a **perfect 1.000** and asks why it is worthless.
+
+Twenty-five drawn figures, 37 slides, 121 verified assertions.
+
+📁 [`Day-33-Simple-Linear-Regression`](Day-33-Simple-Linear-Regression)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-33-Simple-Linear-Regression/Day33_Simple_Linear_Regression.pdf) · [PowerPoint](Day-33-Simple-Linear-Regression/Day33_Simple_Linear_Regression.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Practice_Questions.ipynb) |
+| Practice answers | *posted after the practice session* |
 
 ---
 
@@ -979,9 +1120,22 @@ four or more labelled charts, and five written findings with caveats
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
 
-**Day 31** — take your Day 21 dataset and label every column numeric / nominal / ordinal ·
-say what a supervised problem on it would predict, and whether that is regression or
-classification · run `prepare()` on it and report the shape before and after
+**Day 33** — find any dataset with two number columns · work out the slope and intercept
+**by hand** with the five-step recipe, then check against `LinearRegression` · run
+`fit_and_report` on it · write three sentences: what the slope means in plain words with
+its units, what R-squared came out as, and whether the error plot looked healthy
+
+**Day 32** — take any dataset you have and answer three questions in writing: which of
+your models would care if you scaled it, and why · which single ratio or date part would
+tell the model something it cannot currently express, and does it actually move the test
+score when you add it · and for every column, would its value be known at the moment you
+need the prediction? Flag the ones that would not
+
+**Day 31** — find any table with at least one **word column** and one number you could
+predict · write down what a sample is, what the features are and what the label is · name
+the problem (supervised or unsupervised, regression or classification) · one-hot encode the
+word column and report how many columns you ended up with, saying which you would group
+into "OTHER" if it is more than about 15
 
 **Day 30** — write a one-page test plan for a change you would actually make (unit, primary
 metric, MDE, n per arm, end date) · find a published A/B result and work out what is missing
