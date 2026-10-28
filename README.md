@@ -888,74 +888,85 @@ Fifteen drawn figures, 35 slides, 83 verified assertions.
 
 ---
 
-### Day 32 — Feature Scaling and Feature Engineering
+### Day 32 — Getting Data Into Shape
 
-*Topics 3.3 + 3.4. Before a model can learn anything, the columns have to be in a shape it
-can read. This session is about that shape — and about the one mistake that makes a useless
-model look brilliant.*
+*Topics 3.3 + 3.4, rebuilt in the Day 31 style. Before a model can learn anything, the
+columns have to be in a shape it can read. One idea per slide, a picture on every one, and
+every number on this page was measured, not estimated.*
 
-⭐ **Why scale at all** — distance has no idea that one room is a big difference and twenty
-square feet is nothing. Shown on a query point where the **nearest neighbour literally
-flips**: raw, the 5-rooms-different house wins; scaled, the identical-rooms house wins
+⭐ **Watch a model pick the wrong phone** — you are holding an 8 GB phone at ₹30,000.
+Phone A has the **same RAM** and costs ₹2,000 more. Phone B has **double the RAM** and
+costs ₹500 more. The computer measures the distances as **2,000 and 500** and confidently
+picks B. After scaling they become **0.23 and 1.83**, and it picks A. Nothing about the
+phones changed — only the units
 
-⭐ **The loss surface, drawn** — equal scales make a round bowl and gradient descent walks
-straight to the bottom. Unequal scales stretch it into a **narrow canyon** and the steps
-bounce off the walls. Contour plots of both, with the actual path overlaid
+**The price column is not more important, it is just bigger** — a bar showing the price
+column shouting **5,000 times louder** than the RAM column, which is the whole problem in
+one picture
 
-⭐ **Gradient descent, step by step** — the formula written out, then the arithmetic of a
-single step done by hand before any code runs. Measured: **23 iterations on scaled data,
-versus never in 50,000 on raw data** at every learning rate that does not explode
+⚠️ **So who actually needs scaling?** Measured on 500 phones, three models side by side:
 
-**Who actually needs it** — kNN, SVM, PCA, k-means, neural networks and anything
-regularised: **yes**. Decision trees and forests: **no, never**, and we measure a change of
-exactly 0.000 to prove it. Linear and logistic regression: scale them for **speed,
-regularisation fairness and readable coefficients** — *not* for accuracy, which barely moves
+| Model | no scaling | with scaling |
+|---|---|---|
+| k-nearest neighbours | **0.056** | **0.872** |
+| linear regression | 0.886 | 0.886 |
+| decision tree | 0.825 | 0.825 |
 
-**The three scalers, worked by hand** — the same six numbers through `StandardScaler`
-(z-score), `MinMaxScaler` and `RobustScaler`, formula and arithmetic shown for each
+Only the model that **measures distance** moved. The tree changed by exactly zero, because
+"is the price above ₹20,000?" is the same question however you write the number
 
-⚠️ **What one outlier does to each** — 200 among five normal values: min-max squeezes the
-real points into a **spread of 0.21 inside a fixed [0,1] box**, standard leaves 0.62,
-robust leaves the full 1.60 and simply reports the outlier at +6.6
+**The three scalers, worked by hand** — the formula and the arithmetic for `StandardScaler`,
+`MinMaxScaler` and `RobustScaler`, each one on the same six numbers
 
-⭐ **Feature engineering** — a model can add columns together but it cannot divide one by
-another. A ratio built from two columns the model **already had** moved R² from **0.42 to
-0.94** on one dataset — and moved it by **0.001 on another**, because the target was already
-linear. The lesson is to *measure every feature*, not to perform the ritual
+⚠️ **What one outlier does to each** — five salaries of ₹30k–50k and one CEO on ₹400k, run
+through all three and laid out as a table you read across. Min-max squeezes the five real
+salaries into a spread of **0.05**; robust leaves them at **1.60** and simply reports the
+CEO as sitting **28.6 IQRs out**. One value did that, and it did not even have to be wrong
 
-**Dates, ratios, logs, interactions** — four recipes with worked examples, plus the rule
-that a raw timestamp is never a feature: what matters is *time since*, the month, the
-weekday
+⭐ **The column a model can never invent** — predicting the tip on a food order. A model
+can **add** its columns and **multiply** them by weights, but it can never **divide** one
+by another. So `bill ÷ items` is permanently out of reach. Handing it over moved the score
+from **0.390 to 0.883** — no new data, nothing collected, two existing columns rearranged
 
-⚠️ **Too many features** — adding 120 columns of pure noise to a working model, averaged
-over 20 runs, so you can watch test performance fall away while training performance rises.
-Then filter / wrapper / embedded selection, and when to reach for each
+⭐ **A date is never a feature** — the same timestamp used three ways on 900 deliveries:
+the raw number scores **−0.007**, the hour scores **+0.232**, and "is it between 7pm and
+10pm?" scores **+0.637**. Same column, three different amounts of thinking
 
-⚠️ **The leak that matters most** — the four kinds, ranked by what they actually cost:
-a leaked **scaler** moved accuracy by **+0.006** (one prediction out of 180 — a bad habit,
-small damage); a leaked **selector** turned a dataset of **pure coin-flip noise into 77.5%
-accuracy** against an honest 55.8%. Same keystroke, twenty times the damage
+**Four recipes you will use again and again** — divide one column by another · pull a date
+apart · add things up · make a yes/no flag
 
-⭐ **Target leakage, the one no Pipeline can catch** — the practice set hands you a fraud
-detector scoring **99.9%** with a perfectly constructed Pipeline, and asks you to work out
-why it is worthless. Three of its eight columns are recorded *after* the fraud is
-discovered. Rebuilt honestly it scores 0.868 against a 0.820 do-nothing baseline, and
-catches **41% of fraud** — the number that actually matters
+⚠️ **More columns is not better** — 250 rows, 3 real columns, then junk piled on top. The
+two lines go in opposite directions: the studied-rows score climbs **0.885 → 0.981** while
+the new-rows score falls **0.854 → −0.454**, which is worse than guessing the average.
+Every added column was pure random noise. Then `SelectKBest` finds the three real columns
+again and the score comes back to **+0.854**
 
-**The fix, every time** — one `ColumnTransformer` + `Pipeline` that scales numbers, one-hot
-encodes words, selects features and fits the model, with every step refitted inside every
-fold. It survives an unseen category at predict time, and it cannot leak by construction
+⚠️ **The most expensive mistake of the day** — 100 rows, 3,000 columns of random numbers
+and a random target. Nothing can predict it, so the honest answer is zero. Pick the ten
+best columns **before** splitting and you get **+0.421** — a discovery made of nothing. Put
+the same picker **inside** the pipeline and it reports **−0.280**, the truth
 
-Fifteen drawn figures, 35 slides, 94 verified assertions.
+**The two leaks, side by side** — a leaked **scaler** cost **0.0007**. A leaked **column
+picker** cost **0.70**. It is the same keystroke; the difference is how many lottery
+tickets the leaking step got to buy with your test rows
+
+**The order that keeps you honest** — split, engineer, scale, select, train. With the one
+piece of jargon worth knowing: `.fit()` *learns* the recipe, `.transform()` *applies* it,
+and the hidden rows only ever get `.transform()`
+
+The practice set ends by handing you a model that scores **0.998** with a correct split, a
+correct scaler and no bug anywhere — and asks you to prove it is worth nothing.
+
+Fourteen drawn figures, 30 slides, 19 practice questions, 134 verified assertions.
 
 📁 [`Day-32-Scaling-and-Features`](Day-32-Scaling-and-Features)
 
 | File | |
 |---|---|
-| [Slides (PDF)](Day-32-Scaling-and-Features/Day32_Scaling_and_Features.pdf) · [PowerPoint](Day-32-Scaling-and-Features/Day32_Scaling_and_Features.pptx) | |
+| [Slides (PDF)](Day-32-Scaling-and-Features/Day32_Getting_Data_Into_Shape.pdf) · [PowerPoint](Day-32-Scaling-and-Features/Day32_Getting_Data_Into_Shape.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Practice_Questions.ipynb) |
-| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Practice_Solutions.ipynb) |
+| Practice solutions | *posted after the session* |
 
 ---
 
