@@ -966,78 +966,103 @@ Fourteen drawn figures, 30 slides, 19 practice questions, 134 verified assertion
 | [Slides (PDF)](Day-32-Scaling-and-Features/Day32_Getting_Data_Into_Shape.pdf) · [PowerPoint](Day-32-Scaling-and-Features/Day32_Getting_Data_Into_Shape.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Practice_Questions.ipynb) |
-| Practice solutions | *posted after the session* |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-32-Scaling-and-Features/Day32_Practice_Solutions.ipynb) |
 
 ---
 
-### Day 33 — Simple Linear Regression
+### Day 33 — Drawing the Best Line
 
-*Topic 3.5. Your first machine learning model, built from zero. Nothing is assumed — no
-earlier maths, no earlier Python. One idea per slide, and a picture on every single one.*
+*Topic 3.5, rebuilt in the Day 31 style. Your first machine learning model. The whole
+thing is done on FIVE students first, with numbers small enough to check in your head,
+and only then on the computer. Every number on this page was measured, not estimated.*
 
-**The whole idea in one diagram** — what we have, what we build, what we ask, and the
-answer that comes out
+⭐ **Five students, one question** — hours of study per week against exam mark. A new
+student does 6 hours. What will she score? She is not in the table, so you need a **rule**
 
-**A line is just two numbers** — where it starts and how steep it is. Drawn with the rise
-and run labelled directly on the chart
+**A line is a rule you can carry around** — `mark = 8 × hours + 26` answers for students
+who were never in your data. And notice what it does *not* contain: it does not store the
+five students, it stores **two numbers**
 
-**Which line should we draw?** — four candidate lines through the same five students, and
-the realisation that "my eye likes this one" is not a rule a computer can follow
+⭐ **Measuring how wrong a line is** — the error on one student drawn large. Then the
+first idea, and why it fails: a good line and the **exactly upside-down** line both have
+errors that add to **zero**, because the pluses and minuses cancel. The score tells you
+nothing
 
-⭐ **Measuring how wrong a line is** — the error on ONE student drawn large and clear.
-Then the discovery that **adding the errors up is useless**: a good line and a terrible
-upside-down line both score exactly zero, because plus and minus cancel
+⭐ **So square them first** — the full table, row by row: errors 0, +2, −3, 0, +1, adding
+to 0 but squaring to **14**. Now "best" has a definition you can compute, and the name
+**least squares** stops being jargon
 
-⭐ **Least squares, drawn literally** — every error turned into an actual square on the
-chart, so you can see the total area shrink from **103 to 1.9** as the line improves.
+⭐ **The squares drawn as actual squares** — each error becomes a real square on the chart,
+so you watch the total shaded area shrink from **104 down to 14** as the line improves.
 That picture is where the name comes from
 
-**Why squaring is the right choice** — one miss of 10 costs five times as much as five
-misses of 2, which is exactly the judgement you want
+**Why squaring, and not just dropping the minus sign** — five misses of 2 and one miss of
+10 are both "10 marks wrong" in total, but squaring says the single blunder is **five
+times worse**. That is the judgement we want
 
-⭐ **The recipe, in five plain steps** — find two averages, build two columns, add them up,
-divide once, subtract once. Then **worked by hand** on five students with whole numbers
-(Sxy = 41, Sxx = 10 → slope 4.1, intercept 47.7), and confirmed in three lines of Python
+⭐ **The bowl** — try every slope and plot the error: 174, 104, 54, 24, **14**, 24, 54,
+104, 174. Perfectly symmetric, exactly one bottom, no other dips to get stuck in
 
-**Where the formula comes from** — a clearly-marked *optional* slide, four short sentences.
-You never need it to use the recipe
+⭐ **Route 1 · the formula, worked by hand** — the full table of `hours − 3`, `mark − 50`,
+their product and `(hours − 3)²`, totalling **80** and **10**. So the slope is 80 ÷ 10 =
+**8**, and the intercept follows because the best line always passes through the average
+point (3 hours, 50 marks)
 
-**Reading the result** — say the slope with its units ("each extra square foot adds about
-$2"), never as a bare number. When the starting point is meaningful and when it is
-nonsense, shown side by side on two real datasets
+⭐ **Route 2 · gradient descent, one step by hand** — before any code. The two nudges work
+out to **−332** and **−100**, so one step at a learning rate of 0.03 takes the slope from
+0 to **9.96** and drops the error from **13,154 to 1,518**
 
-⚠️ **Never predict beyond your data** — the model happily answers **$8,914** for a
-4,000 sq ft flat, having never seen one above 1,426
+⚠️ **And watch it run** — the slope *overshoots* to 13.79 before coming back to 8. The
+honest lesson: watch the **error**, not the parameters. The error only ever goes down —
+1518 → 530 → 415 → 309 → 72 → **14.0**
 
-⭐ **R-squared explained as a comparison** — two pictures side by side: the fat error bars
-you get from guessing the average, and the almost-invisible ones you get from the line.
-The score is just the ratio
+**Two routes, the same two numbers** — the formula in one calculation, gradient descent in
+about 800 steps, both landing on slope 8 and intercept 26. Learn the second one properly:
+the formula is a shortcut that only exists for straight lines, while walking downhill is
+how essentially every modern model is trained
 
-**And the number R-squared cannot give you** — "we are typically off by about $178" is what
-a non-technical reader can actually judge
+**Say the slope out loud** — *"one extra hour a week is worth about 8 more marks."* If you
+cannot finish that sentence, you have not understood your own model
 
-⚠️ **Three ways to be fooled**, each with its own picture:
-a **good score hiding a completely wrong model** (a straight line through a curve, caught
-only by the error plot); the **error patterns** to look for — curve, funnel, stray point;
-and **one point far out to the side** dragging a slope from 1.99 down to 0.47 while ten
-honest points watched
+⚠️ **The intercept trap** — 26 is the line's answer at zero hours, but nobody in the data
+studied fewer than 1. It is an extrapolation, and you should not quote it
 
-**The five-step routine** — LOOK → FIT → READ → SCORE → CHECK, as a workflow strip, with
-the reason for each step
+⭐ **R², honestly** — **1 − (14 ÷ 654) = 0.979**, drawn as a picture: the flat line at the
+average 50 against the fitted line, with the errors marked on both. R² compares your line
+with guessing the average, and that is **all** it does
 
-The practice set ends by asking you to **write the recipe into your own function**, then
-hands you a model scoring a **perfect 1.000** and asks why it is worthless.
+⚠️ **An R² of 0.75, and the line is still wrong** — a second dataset where studying helps
+a lot at first and then levels off. The score looks respectable, but the errors swing
+**−4.7, +5.0, +2.2, −3.5** across the range. A pattern in the errors beats any score
 
-Twenty-five drawn figures, 37 slides, 121 verified assertions.
+**Sixty students instead of five** — the slope drops from 8 to **5.44**, R² 0.896, average
+miss 4.5 marks. Five students was never enough to pin the slope down, and that is the real
+lesson
+
+**Split first** — 0.900 on the rows it studied, 0.883 on rows it never saw. A gap of
+**0.017**, against the Day 31 decision tree that scored a perfect 1.000 and then collapsed
+to 0.644. A straight line has two numbers to adjust; it cannot memorise
+
+⚠️ **Never extrapolate** — nobody studied more than 11.9 hours. Ask the line about 25 and
+it answers **164 marks on a paper out of 100**, without blinking
+
+**Five mistakes everybody makes once** — including the one that gets people into print:
+*hours cause marks*. A line measures that two things move together, and is completely
+silent about why.
+
+The practice set ends by handing you a board memo with an **R² of 0.93** and asking you to
+find the **two separate reasons** its conclusion does not follow.
+
+Seventeen drawn figures, 38 slides, 19 practice questions, 221 verified assertions.
 
 📁 [`Day-33-Simple-Linear-Regression`](Day-33-Simple-Linear-Regression)
 
 | File | |
 |---|---|
-| [Slides (PDF)](Day-33-Simple-Linear-Regression/Day33_Simple_Linear_Regression.pdf) · [PowerPoint](Day-33-Simple-Linear-Regression/Day33_Simple_Linear_Regression.pptx) | |
+| [Slides (PDF)](Day-33-Simple-Linear-Regression/Day33_Drawing_the_Best_Line.pdf) · [PowerPoint](Day-33-Simple-Linear-Regression/Day33_Drawing_the_Best_Line.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Practice_Questions.ipynb) |
-| Practice answers | *posted after the practice session* |
+| Practice solutions | *posted after the session* |
 
 ---
 
@@ -1131,10 +1156,12 @@ four or more labelled charts, and five written findings with caveats
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
 
-**Day 33** — find any dataset with two number columns · work out the slope and intercept
-**by hand** with the five-step recipe, then check against `LinearRegression` · run
-`fit_and_report` on it · write three sentences: what the slope means in plain words with
-its units, what R-squared came out as, and whether the error plot looked healthy
+**Day 33** — find any dataset with two number columns · **draw the scatter first** and
+write one sentence saying whether a straight line is even the right shape · fit it, then
+write the sentence *"one more unit of X is worth ___ of Y"* with the real units in it ·
+report R² **next to a baseline** (what would guessing the average have cost?) · plot the
+errors against the input and say whether you see a pattern · and write down your
+minimum and maximum X, so you know where you are allowed to predict
 
 **Day 32** — take any dataset you have and answer three questions in writing: which of
 your models would care if you scaled it, and why · which single ratio or date part would
