@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 33** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
+**Covered so far: Day 1 – Day 35** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1062,9 +1062,171 @@ Seventeen drawn figures, 38 slides, 19 practice questions, 221 verified assertio
 | [Slides (PDF)](Day-33-Simple-Linear-Regression/Day33_Drawing_the_Best_Line.pdf) · [PowerPoint](Day-33-Simple-Linear-Regression/Day33_Drawing_the_Best_Line.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-33-Simple-Linear-Regression/Day33_Practice_Solutions.ipynb) |
+
+
+### Day 34 — More Than One Column
+
+*Topic 3.6. Multiple linear regression. The maths is a small step — one number per column
+instead of one number in total. The hard part is reading the answer, and that is where
+most of the day goes. Every number on this page was measured, not estimated.*
+
+⭐ **Six flats, two facts each** — flats 3 and 6 are both 900 sqft, but one has two
+bedrooms and rents for ₹21,000 while the other has three and rents for ₹23,000. A model
+that only knows the area **must predict the same number for both**, so it is guaranteed to
+be wrong on one of them
+
+**One number per column, and nothing else changes** — `rent = 2 × area + 1 × bedrooms + 2`.
+Errors still add to zero, squares still add to 4, R² is still 0.981. The whole six-flat
+table is worked by hand so every prediction can be checked with a calculator
+
+⭐ **A line becomes a flat sheet** — one input column draws a line, two draw a plane, drawn
+in 3D. And an honest warning: with three columns it becomes a shape in four dimensions
+that nobody can draw. **That is the last slide where you can see the model**
+
+**Each column alone, and the two together** — area alone 0.9736, bedrooms alone 0.6923,
+both 0.9808. Area was doing most of the work — but bedrooms still cut the squared error
+from 5.5 to 4.0, a 27% reduction
+
+⭐ **What a coefficient actually promises** — not "bigger flats cost ₹23 more per foot",
+but: take two flats **identical** in bedrooms, age and distance, and the extra foot is
+worth ₹23. Shown by predicting a 1,000 sqft flat and a 1,001 sqft flat and watching the
+gap come out at exactly the coefficient
+
+⚠️ **The sign that flips** — on 500 flats, bedrooms alone says **+₹4,683** per bedroom.
+Bedrooms alongside square footage says **−₹1,474**. Nothing was changed in the data, there
+is no bug, and **both numbers are correct**
+
+⭐ **Why, with no regression involved** — across all 500 flats, average rent climbs with
+bedrooms: ₹13,717 → ₹18,026 → ₹22,827 → ₹28,332. Among flats of **850–1,150 sqft** it goes
+the other way: ₹20,529 → ₹19,994 → ₹19,591. Two true tables pointing in opposite
+directions, and the rule that follows: **a coefficient is not a property of its column —
+it is a property of the column and every other column in the model**
+
+⚠️ **Two columns saying the same thing** — somebody adds `sqm`, the area again in square
+metres. Across four splits the coefficients swing from **+1,435 to −883** on `sqft` and
+from **−22,257 to +9,754** on `sqm`. But their combined effect is **+₹23 per sqft every
+single time**, and the hidden R² never moves. *The model is fine. The explanation is
+ruined* — that is multicollinearity in one sentence
+
+**And when NOT to drop a column** — `sqft` and `bedrooms` correlate at 0.79, well above the
+0.8 rule you will read online. Dropping bedrooms would have thrown away the most
+interesting finding of the day. The question is not "do they move together" but "do they
+**mean** the same thing"
+
+⚠️ **R² can never go down when you add a column** — thirty columns of pure random numbers
+raised it every single time, 0.8349 → 0.8496. Adjusted R² barely flinched (0.8330 →
+0.8334). The hidden score fell steadily, 0.8114 → 0.7731. **Adjusted R² is a weak guard,
+not a safe one**
+
+**So add columns one at a time** — and watch how uneven it is: bedrooms bought +0.022,
+age bought +0.101. Add them together and you would never know which was which
+
+**A word column, back to one-hot** — three furnishing categories become **two** columns,
+not three. The dropped category does not vanish; it becomes the **zero point** that every
+other coefficient is measured against
+
+⭐ **Which column matters most? Not the biggest coefficient** — raw, `sqft` looks like the
+smallest effect in the model at **+23**, next to **−4,555** for unfurnished. Scaled, it is
+**three times bigger than anything else**. A coefficient's size depends entirely on the
+units of its column
+
+⚠️ **Four columns, four ways to walk off the edge** — and a flat can be inside every single
+range and still be impossible: **400 sqft with 5 bedrooms**. Zero such rows exist, so the
+model has never seen the combination
+
+The practice set ends with a hospital model reporting that **each extra nurse on a shift is
+associated with 0.66 more deaths**, and asks you to find the one column that was left out.
+
+Sixteen drawn figures, 36 slides, 19 practice questions, 291 verified assertions.
+
+📁 [`Day-34-Multiple-Linear-Regression`](Day-34-Multiple-Linear-Regression)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-34-Multiple-Linear-Regression/Day34_More_Than_One_Column.pdf) · [PowerPoint](Day-34-Multiple-Linear-Regression/Day34_More_Than_One_Column.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-34-Multiple-Linear-Regression/Day34_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-34-Multiple-Linear-Regression/Day34_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-34-Multiple-Linear-Regression/Day34_Practice_Solutions.ipynb) |
+
+
+### Day 35 — Yes or No
+
+*Topic 3.7. Logistic regression. The first model that answers a question instead of
+predicting a number — and the first one where **the answer you report is a choice you
+made**, not something the maths hands you. Picks up directly from the cost function and
+gradient descent session. Every number on this page was measured, not estimated.*
+
+⭐ **Why a straight line will not do** — fit a line to ten students' pass/fail results and
+it predicts **−9%** for a student who studied one hour. Not "unlikely". Negative nine
+percent. A probability has to live between 0 and 1, and a line does not know that
+
+**The S-curve, built in two steps** — first the familiar `w × x + b`, which can be any
+number at all; then the sigmoid, which squashes any number into (0, 1). `sigmoid(0)` is
+exactly 0.5, and you can work it out without a calculator
+
+**Fitted on the ten students** — w = **0.906**, b = **−4.983**. p at 1 hour is 0.017, at 5
+hours 0.389, at 6 hours 0.611, at 10 hours 0.983. The curve crosses 0.5 at **5.50 hours**
+
+⚠️ **Squared error has a ceiling, and that is the problem** — the worst a squared error
+can ever be is 1.0. Log loss has no ceiling: being 99.99% confident in something that does
+not happen costs **9.21**. Worked out side by side at p = 0.9, 0.1, 0.001 and 0.0001
+
+⭐ **One disaster among 99 good predictions** — the average squared error is **0.0199**,
+which hides it completely. The average log loss is **0.1734**, and **40% of that total is
+the single bad row**. The cost function's whole job is to make a confident mistake
+impossible to ignore
+
+**Gradient descent, unchanged** — the update is still `error = prediction − truth`, exactly
+as yesterday. The *only* difference is that the prediction now comes out of a sigmoid.
+Shown converging on the ten students
+
+⭐ **What a coefficient means, and the mistake almost everyone makes** — w = 0.906 does
+**not** add 0.906 to the probability. Between 4 and 8 hours the probability steps are
+**+0.184, +0.223, +0.184, +0.110** — all different. The **odds** go 0.257 → 0.636 → 1.573
+→ 3.891 → 9.626, multiplying by **2.4742 every single step**, which is e⁰·⁹⁰⁶
+
+**The boundary, and the threshold nobody chose** — `.predict()` silently applies 0.5.
+On 800 students, raising the cut-off from 0.3 to 0.8 takes precision from 0.690 to
+**0.903** and accuracy from 0.692 down to 0.592. **Neither number is "right" until you say
+what each mistake costs**
+
+⚠️ **Accuracy without a baseline is not a result** — the campus placement model scores
+**0.7458** on hidden rows. Guessing "placed" for everybody scores **0.65**
+
+**The confusion matrix** — 240 hidden students: 135 correctly placed, 44 correctly not,
+**40 false alarms and 21 missed**. Four numbers that one accuracy figure had hidden
+
+**One real student, scored end to end** — CGPA 8.4, two internships, no backlogs, mock
+score 7.5, CSE. Every term written out: z = **+3.797**, p = **0.978**
+
+**Which column matters most** — the raw coefficients say CGPA (+1.044). Scaled, CGPA
+(0.907) still leads, but internships (0.550) overtakes the branch dummies. Same trap as
+Day 34, same fix
+
+⚠️ **`stratify=y` is not optional** — on a flag that occurs in **9 of 800 rows**, eight
+random splits put between 0.83% and 1.67% of it in the hidden half. With `stratify=y`,
+every split is 1.25%
+
+The practice set builds logistic regression **from scratch** — the gradient descent loop
+with a sigmoid in it — and confirms it lands on the same answer as scikit-learn to four
+decimal places. It ends with a deployed hiring screener that is **86% accurate**,
+auto-rejects applicants below 0.5 without human review, and quietly throws away **44 of
+the 66 people who would have been hired**.
+
+Sixteen drawn figures, 37 slides, 19 practice questions, 354 verified assertions.
+
+📁 [`Day-35-Logistic-Regression`](Day-35-Logistic-Regression)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-35-Logistic-Regression/Day35_Yes_or_No.pdf) · [PowerPoint](Day-35-Logistic-Regression/Day35_Yes_or_No.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-35-Logistic-Regression/Day35_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-35-Logistic-Regression/Day35_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the session* |
 
 ---
+
 
 ## Working with the notebooks
 
@@ -1155,6 +1317,21 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 35** — find or build any dataset with a **yes/no** outcome · before fitting
+anything, **count both classes** and write down the baseline you have to beat · fit it with
+`stratify=y`, then write every coefficient as a sentence about **odds**, using `exp()` ·
+report accuracy **next to that baseline**, and print the confusion matrix beside it · then
+build the threshold table from 0.1 to 0.9 and write one paragraph naming what a false yes
+costs and what a false no costs in **your** problem, and defend the cut-off you chose ·
+finally, score one real row by hand, term by term, and check it against `predict_proba`
+
+**Day 34** — take any dataset with at least three number columns and one word column ·
+one-hot the word column and fit the lot · for **every** coefficient, write the sentence
+including the clause *"holding the others constant"* · then refit with one column removed
+and note which coefficients moved, and by how much · scale the columns and write down
+which one actually matters most · finally, name one column that is **missing** from your
+data and could be quietly doing the work of one that is there
 
 **Day 33** — find any dataset with two number columns · **draw the scatter first** and
 write one sentence saying whether a straight line is even the right shape · fit it, then
