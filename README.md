@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 38** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
+**Covered so far: Day 1 – Day 41** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1433,6 +1433,172 @@ Nine drawn figures, 21 slides, 14 practice questions, 188 verified assertions.
 | [Slides (PDF)](Day-38-K-Nearest-Neighbours/Day38_Ask_the_Neighbours.pdf) · [PowerPoint](Day-38-K-Nearest-Neighbours/Day38_Ask_the_Neighbours.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-38-K-Nearest-Neighbours/Day38_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-38-K-Nearest-Neighbours/Day38_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-38-K-Nearest-Neighbours/Day38_Practice_Solutions.ipynb) |
+
+---
+
+### Day 39 — Twenty Questions
+
+*Topic 3.11. Decision trees — the first model you can read out loud. Yesterday's KNN
+could not explain itself; this one answers in sentences a committee could check. 23
+slides, three sections.*
+
+**The data** — 900 past scholarship decisions from a committee that never wrote its rule
+down. 299 awarded, so guessing "not awarded" every time already scores **0.6678**. That
+is the bar
+
+**A tree is a flowchart it writes for you** — each box asks one yes/no question about one
+column; a leaf is a box of past students and the answer is whichever label is in the
+majority there. One applicant, three questions, and `predict_proba` returns **158/171 =
+0.924** — literally the fraction of that leaf who were awarded, no arithmetic involved
+
+⭐ **Scaling makes exactly no difference** — **0.8967** raw, **0.8967** standard-scaled,
+**0.8967** with income in lakhs, **0.8967** with marks multiplied by a thousand. Not
+approximately: identical. The same four versions move KNN from **0.6711** to **0.8622**.
+A tree compares, KNN measures distance — opposite requirements from the same table
+
+**How it picks a question, worked by hand** — Gini impurity is **0.4437** at the root.
+Split on `marks ≤ 74.5` and the two sides come out 0.2763 and 0.4534, weighted
+**0.3369**, a drop of **0.1068** — twelve times better than the income question. Then it
+does that for all **960** candidate thresholds (63 on marks, 50 on attendance, 846 on
+income, 1 on sport), keeps the winner, and repeats inside each half
+
+⚠️ **Left alone it memorises** — unlimited depth gives training accuracy **1.0000**,
+cross-validated **0.8478**, and **137 leaves for 900 students**. A gap of **+0.1522** is
+the signature. `max_depth=5` fixes it at **0.9078**; `min_samples_leaf=10` closes the gap
+to **+0.0094**
+
+**Why it wins here, and when it would lose** — the committee's real rule contains "marks
+at least 75 AND attendance at least 80", which is a corner, and a tree draws corners for
+free. It beats logistic regression **0.9078 to 0.8100**. Part D of the practice set hands
+students a dataset with a *smooth* truth, where the same tree comes **last** — the point
+being that there is no best algorithm, only the one whose shape matches the truth
+
+The practice set also shows what feature importances are worth: duplicate the `marks`
+column and its importance collapses from **0.5306 to 0.0906**, with the missing 0.4399
+sitting on the copy. No information was added.
+
+Ten drawn figures, 23 slides, 15 practice questions, 184 verified assertions.
+
+📁 [`Day-39-Decision-Trees`](Day-39-Decision-Trees)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-39-Decision-Trees/Day39_Twenty_Questions.pdf) · [PowerPoint](Day-39-Decision-Trees/Day39_Twenty_Questions.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-39-Decision-Trees/Day39_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-39-Decision-Trees/Day39_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-39-Decision-Trees/Day39_Practice_Solutions.ipynb) |
+
+---
+
+### Day 40 — A Hundred Opinions
+
+*Topic 3.12. Random forests — the first ensemble. Yesterday's tree was readable but
+twitchy; today we fix the twitchiness and pay for it in readability. 23 slides, three
+sections.*
+
+**Harder data** — the same scholarship committee, but **1200 decisions and ten columns**,
+of which **three are pure noise** by construction. Baseline **0.5708**. A single tree
+manages 0.7492 unlimited, **0.8200** after a 28-combination grid search
+
+⭐ **The real win is not accuracy, it is stability** — refit on a random 90% of the rows
+five times and ask about the same 200 applicants. The tuned tree gives **41 of them two
+different answers** (one in five). The forest gives **8**. A committee can defend being
+82% accurate; it cannot defend changing its mind about one applicant in five
+
+**Bootstrap sampling** — each tree draws 1200 rows *with replacement*, so it sees about
+**63.2%** of them (that is 1 − 1/e, not a coincidence) and never sees the rest. Those
+left-out rows become the **out-of-bag score**: 0.8475 here, free, no extra fitting
+
+**Two dice** — different rows per tree, and only `max_features` random columns offered at
+each split. Tested honestly over 50 fits, only `max_features=1` is clearly worse; the
+spread from 3 to 10 is **0.0089** against a fold-to-fold sd of **0.0194**, so **nothing
+in that range is established**
+
+⚠️ **The forest scores 1.0000 on its training rows too** — a gap of +0.1617. That is
+guaranteed by construction, not a warning, and pruning to close it makes things worse:
+`max_depth=3` drops CV to 0.7918. A single 5-fold split said depth 8 *beat* unlimited at
+0.8433; over 50 folds it is **0.0018 worse and wins only 17 of 50**
+
+⚠️ **feature_importances_ cannot be trusted** — `club_hours` is random data and the forest
+ranks it **6th of 10**, above two columns that are genuinely in the rule. The three noise
+columns collect **0.1730** between them. Permutation importance, measured on held-out
+data, puts all three at **−0.0117** — two of them negative
+
+**What it cost** — no `export_text` (17,863 leaves across 100 trees), roughly 40× slower
+to fit, and on Day 39's *smooth* exam data the forest finishes **last**, below the single
+tree, because ensembling reduces variance and cannot reduce bias
+
+The headline: forest **0.8383** against the tuned tree's 0.8200. Is 1.8 points real? Over
+50 paired folds the forest wins by **0.0308** and comes out ahead in **42 of 50** — and
+the same test shows the single split had flattered the tree by 1.6 points.
+
+Twelve drawn figures, 23 slides, 15 practice questions, 156 verified assertions.
+
+📁 [`Day-40-Random-Forests`](Day-40-Random-Forests)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-40-Random-Forests/Day40_A_Hundred_Opinions.pdf) · [PowerPoint](Day-40-Random-Forests/Day40_A_Hundred_Opinions.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-40-Random-Forests/Day40_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-40-Random-Forests/Day40_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-40-Random-Forests/Day40_Practice_Solutions.ipynb) |
+
+---
+
+### Day 41 — The Widest Street
+
+*Topic 3.13. Support vector machines. One idea, carried the whole way: of all the lines
+that separate the groups, keep the one with the widest empty street either side.
+22 slides, three sections, built around **six animations** rather than static figures.*
+
+**The street** — every model so far asked "where is the boundary?" An SVM asks "where is
+the **widest gap**?" and puts the boundary down its middle. Width is a claim about data
+you have not seen yet: it is how far a new point can land from its group before the line
+gets it wrong
+
+⭐ **Only the points on the kerb matter.** On the 32-point toy, **3 points** are support
+vectors — 9% of the data. Delete the other 29, refit, and the boundary is **identical**.
+No other model you have met is defined by so little of its data, and that is both the
+elegance and the fragility: one mislabelled row near the boundary drags the whole thing
+
+**`C` — the price of a mistake.** Real data does not split cleanly, so points are allowed
+to stand in the street at a price. Measured on the overlapping set, the street width goes
+**23.31 → 3.97 → 2.66** as `C` goes 0.001 → 0.1 → 100. Big `C` means a *narrow* street,
+which is the opposite of what the letter suggests
+
+**When no line works** — one group in the middle, the other in a ring around it. Baseline
+0.5000, linear SVM **0.6000**, and logistic regression **0.4167**, which is *worse than
+guessing*. Add one column — distance from the centre — and the ring lifts off the page so
+a flat sheet slides between them. `kernel="rbf"` gets that for free: **1.0000**
+
+**`gamma` — how local the curve is.** Every caption in this section is a measured
+cross-validated score, not an adjective: **0.633** at gamma 0.004 (too smooth), **1.000**
+at 0.393, **0.783** at 50 (islands around each point). `C` and `gamma` fail in the same
+direction, so they are searched together
+
+⚠️ **Always scale first.** Same data, same model: **0.7500** unscaled, **0.9200** inside
+a `StandardScaler` pipeline — seventeen points from one line of code. A random forest on
+the identical raw columns gets 0.8800 and does not care, because a tree *compares* values
+while an SVM *measures distance* between them
+
+**The honest limit** — training time grows roughly like n². Multiply the rows by 48 and
+the SVM's fit time multiplies by about 700, the forest's by under 20. SVMs are for
+**small, wide, clean, numeric** data; forests are for almost everything else
+
+Six animations, 22 slides, 12 practice questions in four parts, 92 verified assertions.
+
+> **Note on the slide files.** The PowerPoint carries the six animations as looping GIFs —
+> open it in slideshow mode to see them move. The PDF cannot animate, so each animation
+> appears there as a three-panel strip showing start, middle and end.
+
+📁 [`Day-41-Support-Vector-Machines`](Day-41-Support-Vector-Machines)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-41-Support-Vector-Machines/Day41_The_Widest_Street.pdf) · [PowerPoint — animated](Day-41-Support-Vector-Machines/Day41_The_Widest_Street.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-41-Support-Vector-Machines/Day41_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-41-Support-Vector-Machines/Day41_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the session* |
 
 ---
@@ -1527,6 +1693,29 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 41** — finish `Day41_Practice_Questions.ipynb`, twelve questions in four parts:
+the street and the points that hold it open, the `C` knob, kernels and `gamma`, and
+judgement · Questions 6, 8, 10, 11 and 12 are marked mostly on the **explanation**, so a
+correct number with no reasoning earns little · pay particular attention to Q11, where the
+faster model is not the one that scales
+
+**Day 40** — take the dataset you used for Day 39 and fit a random forest beside your
+tree · report both CV scores on the **same folds**, and repeat it enough times to say
+whether any difference is real · run the stability test: refit both on a random 90% five
+times and count how many rows change answer · check `oob_score_` against your CV score,
+and say which you would report · then print `feature_importances_`, print
+`permutation_importance` on held-out data beside it, and write down every column where
+the two disagree
+
+**Day 39** — take any classification dataset you have and fit a decision tree · print it
+with `export_text` and write the rule it found in plain English, then say which parts of
+it you believe · build the depth curve with `cross_validate(..., return_train_score=True)`
+and find where the two lines start pulling apart · tune `max_depth` and
+`min_samples_leaf` together with `GridSearchCV`, and report the CV score beside the
+baseline · fit the same data with logistic regression and say, from the *shape* of your
+boundary, which one should have won before you look at the numbers · finally, duplicate
+one of your columns, refit, and watch what happens to its feature importance
 
 **Day 38** — take any classification dataset you have and fit KNN twice, once with a
 `StandardScaler` in the Pipeline and once without, and write down the two numbers · check
