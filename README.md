@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 41** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
+**Covered so far: Day 1 – Day 43** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -24,6 +24,31 @@ Each session ships with four things:
 2. **Teaching notebook** — every example from the slides, runnable, with extra detail
 3. **Practice questions** — the 30-minute hands-on set
 4. **Practice solutions** — worked answers with explanations, **posted after the session**
+
+---
+
+## 📘 Module 3 revision — the complete ML cheat sheet
+
+**[`ML_Cheat_Sheet.pdf`](ML_Cheat_Sheet.pdf)** — every machine learning concept in the
+syllabus on one desk. 25 pages, print it double-sided.
+
+Covers topics **3.1 – 3.25** (everything except AdaBoost, Gradient Boosting and XGBoost,
+which were dropped): what ML is · encoding · scaling · feature engineering · linear and
+multiple regression · cost functions and gradient descent · Ridge & Lasso · logistic
+regression · k-NN · decision trees · random forests · SVM · naive Bayes · train/test
+split, cross-validation and pipelines · evaluation metrics · hyperparameter tuning ·
+imbalanced data · K-Means · hierarchical clustering · DBSCAN · PCA · saving and serving a
+model · the end-to-end checklist.
+
+Each topic gives the one-line definition, the formula with **every symbol explained**, the
+single line of scikit-learn that does it, and the mistake people make. It ends with four
+reference pages: a **model chooser**, a **formula sheet**, a **scikit-learn page**, **twenty
+classic mistakes with what each one costs**, and a glossary.
+
+> Every measured figure in it was produced by running the code — nothing is recalled or
+> estimated. Where the usual advice turned out to be wrong, the sheet says so: class
+> weighting and SMOTE both *lowered* F1 below doing nothing on the imbalanced example,
+> while simply moving the decision threshold more than doubled it.
 
 ---
 
@@ -1550,7 +1575,7 @@ Twelve drawn figures, 23 slides, 15 practice questions, 156 verified assertions.
 
 *Topic 3.13. Support vector machines. One idea, carried the whole way: of all the lines
 that separate the groups, keep the one with the widest empty street either side.
-22 slides, three sections, built around **six animations** rather than static figures.*
+26 slides, three sections, built around **six animations** rather than static figures.*
 
 **The street** — every model so far asked "where is the boundary?" An SVM asks "where is
 the **widest gap**?" and puts the boundary down its middle. Width is a claim about data
@@ -1562,10 +1587,18 @@ vectors — 9% of the data. Delete the other 29, refit, and the boundary is **id
 No other model you have met is defined by so little of its data, and that is both the
 elegance and the fragility: one mislabelled row near the boundary drags the whole thing
 
-**`C` — the price of a mistake.** Real data does not split cleanly, so points are allowed
-to stand in the street at a price. Measured on the overlapping set, the street width goes
-**23.31 → 3.97 → 2.66** as `C` goes 0.001 → 0.1 → 100. Big `C` means a *narrow* street,
-which is the opposite of what the letter suggests
+**The formula, built in four steps** — "widest street" is first turned into a number
+(width = 2 / ||w||, so widest = smallest ||w||), then slack **ξ** is introduced as how far
+one point fell short of its kerb (0 if it behaved, above 1 if it is on the wrong side),
+then the two are glued together into the objective every SVM minimises:
+**½||w||² + C × (ξ1 + ξ2 + … + ξn)**. Each term gets its own labelled note; no symbol is
+left unexplained
+
+⭐ **`C` shown deciding, in real numbers.** Two actual lines on the overlapping data, both
+scored under the formula. Line A is wide (width 4.84, total slack 10.95); line B is narrow
+(width 1.08, slack 2.07). At `C = 0.01` the totals are **0.195 vs 1.735** — A wins. At
+`C = 100` they are **1095.4 vs 209.0** — B wins. Same data, same two lines, winner
+reversed. `C` does not adjust the line; it changes which line counts as best
 
 **When no line works** — one group in the middle, the other in a ring around it. Baseline
 0.5000, linear SVM **0.6000**, and logistic regression **0.4167**, which is *worse than
@@ -1586,7 +1619,7 @@ while an SVM *measures distance* between them
 the SVM's fit time multiplies by about 700, the forest's by under 20. SVMs are for
 **small, wide, clean, numeric** data; forests are for almost everything else
 
-Six animations, 22 slides, 12 practice questions in four parts, 92 verified assertions.
+Six animations, 26 slides, 12 practice questions in four parts, 118 verified assertions.
 
 > **Note on the slide files.** The PowerPoint carries the six animations as looping GIFs —
 > open it in slideshow mode to see them move. The PDF cannot animate, so each animation
@@ -1599,6 +1632,133 @@ Six animations, 22 slides, 12 practice questions in four parts, 92 verified asse
 | [Slides (PDF)](Day-41-Support-Vector-Machines/Day41_The_Widest_Street.pdf) · [PowerPoint — animated](Day-41-Support-Vector-Machines/Day41_The_Widest_Street.pptx) | |
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-41-Support-Vector-Machines/Day41_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-41-Support-Vector-Machines/Day41_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-41-Support-Vector-Machines/Day41_Practice_Solutions.ipynb) |
+
+---
+
+### Day 42 — Counting the Clues
+
+*Topic 3.16. Naive Bayes — the model that does arithmetic instead of geometry. Every
+model so far drew something: a line, a staircase, a street. This one draws nothing. It
+tallies how often each clue appears in each class and compares two totals.
+21 slides, three sections, four animations.*
+
+**Bayes' rule, built from tally marks.** Conditional probability was never taught in
+Module 2 (topics 2.7 and 2.8 were skipped), so this day builds it from zero. Twenty
+short messages, eight of them spam. Seven contain the word "free", and **six of those
+seven are spam** — so `P(spam | free) = 6/7 = 0.857`, obtained by covering rows with your
+hand. Then Bayes' rule gives `0.750 × 0.400 ÷ 0.350 = 0.857`: the identical number. The
+rule is not a new fact about the world, it is how you reach that same count when the
+table is too big to cover
+
+⚠️ **P(A|B) is not P(B|A).** On the same twenty messages, `P(spam | free) = 0.857` but
+`P(free | spam) = 0.750`. Same two words, different question. This is the prosecutor's
+fallacy, and the slide gives the medical-testing and DNA-evidence versions of it
+
+**Why "naive".** With two clues you need 4 combinations, with ten you need 1,024, with a
+1,000-word vocabulary you need a 302-digit number of them — and we have 20 messages. So
+the model refuses the question and multiplies single-word probabilities instead
+
+⭐ **The assumption is false, and the deck proves it.** Independence predicts **half a
+message** in the corner where there really is **one** — *"are you free for a meeting"*,
+because those words travel together. Wrong by a factor of 2, measured, on 20 rows. And
+naive Bayes remains one of the best spam filters ever built: classifying needs only the
+**ranking** of two totals, and the distortion preserves the order even when it wrecks the
+numbers. Which is why you trust `predict()` and not `predict_proba()`
+
+**The zero that ruins everything.** "Meeting" never appears in the 8 spam messages, so
+`P(meeting | spam) = 0` and the whole product collapses to zero — the model is *certain*,
+on the strength of one word it has never seen. Laplace smoothing adds α to every count;
+at α = 1 the answer becomes **39.5% spam**, still ham but for a reason that survives a
+missing word
+
+**And the one that ruins it quietly.** 200 clues at p = 0.01 multiply to **exactly 0.0** —
+below the smallest float64 — while the logs sum to a perfectly ordinary −921.03. Logs
+never change which total is bigger, so nothing is lost
+
+**The honest trade.** On 1,797 handwritten digits, MultinomialNB scores **0.9009** against
+the SVM's **0.9805** — last place, eight points behind — and runs in **0.010s** against the
+forest's **1.985s**. You reach for it not because it wins but because it answers in ten
+milliseconds and shows you the floor. It also needs **no scaling** (it never measures a
+distance) and has essentially one knob
+
+Four animations, 21 slides, 12 practice questions in four parts, 135 verified assertions.
+
+> **Note on the slide files.** The PowerPoint carries the four animations as looping GIFs —
+> open it in slideshow mode to see them move. The PDF cannot animate, so each one appears
+> there as a three-panel strip showing start, middle and end.
+
+📁 [`Day-42-Naive-Bayes`](Day-42-Naive-Bayes)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-42-Naive-Bayes/Day42_Counting_the_Clues.pdf) · [PowerPoint — animated](Day-42-Naive-Bayes/Day42_Counting_the_Clues.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-42-Naive-Bayes/Day42_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-42-Naive-Bayes/Day42_Practice_Questions.ipynb) |
+| Practice solutions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-42-Naive-Bayes/Day42_Practice_Solutions.ipynb) |
+
+---
+
+### Day 43 — Finding Groups Nobody Labelled
+
+*Topic 3.17. K-Means clustering — the first model that is never told the answers. For
+twelve days every model has been handed a column of correct answers to copy. Today that
+column is gone. 19 slides, three sections, five animations.*
+
+**240 customers, two columns, no labels.** How many times they ordered last month, and
+their average order value. Nothing else — no segments, no tags, and no way to score an
+answer, because there is nothing to score it against
+
+**The algorithm is four lines:** pick k, drop k centres at random, assign every point to
+its nearest centre, move each centre to the middle of what it caught, repeat. On our data
+it converged in **four passes** — inertia 220.7 → 93.5 → 42.5 → 41.5,
+with 48 then 6 then 0 customers changing their mind. The twenty lines students write
+themselves match scikit-learn exactly
+
+⭐ **Why it always stops, and why that is not reassuring.** Assigning to the *nearest*
+centre cannot lengthen a distance, and the *mean* is the best place to stand — so both
+steps can only lower inertia, and a number that only falls must run out of room. But the
+loop halts the moment nothing moves, and nothing-moves can happen at a bad arrangement:
+**10 of 30 random starts got stuck**, returning 179.7 or 203.4 instead of 41.5
+
+⚠️ **You cannot choose k by minimising inertia.** It falls every single time —
+480.0 at k=1 down to 11.8 at k=10 — and reaches **exactly 0** when every row is its own
+cluster. The elbow is visible in the drops (150.7 for the third cluster, **10.8** for the
+fourth), and the silhouette has a real peak: **0.742 at k=3**, the right answer, found
+without ever being told
+
+⚠️ **Scaling decides everything.** Value varies 39× more than orders, so the raw
+model cut on price alone — two horizontal lines, all 160 small-basket customers lumped
+together. Agreement with the real groups: **0.467 raw against 0.975 scaled**
+
+**Three assumptions you make whether you mean to or not:** clusters are round, similarly
+sized, and k is known. Two crescents score **0.234**; one big group and two small ones gets
+split **65 / 106 / 109** where the truth was 30 / 30 / 220
+
+⭐ **The trap in the scoring.** On the crescents the silhouette reads **0.488** — a
+middling number you would shrug at and accept, attached to a near-worthless result.
+Silhouette measures *separation*, not *correctness*, and nothing can measure correctness
+because nobody labelled the data. Plot your clusters
+
+**The payoff.** The three groups turn out to be students (17.9 orders of ₹234),
+families (5.3 orders of ₹790) and occasional users. Students and families are worth
+**almost exactly the same per month — ₹4,196 against ₹4,178** — by completely
+opposite routes. A "top customers" list sorted by spend would mix them and treat them
+identically, but free delivery is worth a lot to one and nothing to the other
+
+Five animations, 19 slides, 12 practice questions in four parts, 130 verified assertions.
+
+> **Note on the slide files.** The PowerPoint carries the five animations as looping GIFs —
+> open it in slideshow mode to see them move. The PDF cannot animate, so each one appears
+> there as a three-panel strip.
+
+📁 [`Day-43-K-Means-Clustering`](Day-43-K-Means-Clustering)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-43-K-Means-Clustering/Day43_Finding_Groups.pdf) · [PowerPoint — animated](Day-43-K-Means-Clustering/Day43_Finding_Groups.pptx) | |
+| Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-43-K-Means-Clustering/Day43_Teaching_Notebook.ipynb) |
+| Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-43-K-Means-Clustering/Day43_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the session* |
 
 ---
@@ -1693,6 +1853,19 @@ four or more labelled charts, and five written findings with caveats
 **Day 23** — reproduce the n−1 simulation and try n = 3, 10 and 50 · find a real dataset
 where the mean and median disagree, and explain why · run `honest_summary` on three columns
 of your Day 21 project data
+
+**Day 43** — finish `Day43_Practice_Questions.ipynb`, twelve questions in four parts:
+running the loop, choosing k, breaking it, and using it · you write the four-line
+algorithm yourself in Part A · Part B ends with **iris**, where the silhouette confidently
+picks the wrong number of species · Part C shows an *unscaled* clustering scoring a
+**better** silhouette than the correct one · Questions 3, 8, 11 and 12 are marked on the
+**explanation**, and Q12 asks for one sentence a manager could act on
+
+**Day 42** — finish `Day42_Practice_Questions.ipynb`, twelve questions in four parts:
+counting and Bayes' rule, the naive assumption, smoothing and logs, and choosing a
+flavour · a **new corpus of 24 product reviews**, so you cannot reuse the lecture
+numbers · Questions 3, 7, 10 and 12 are marked mostly on the **explanation** · Q3 asks
+you to describe where confusing `P(A|B)` with `P(B|A)` sends somebody badly wrong
 
 **Day 41** — finish `Day41_Practice_Questions.ipynb`, twelve questions in four parts:
 the street and the points that hold it open, the `C` knob, kernels and `gamma`, and
