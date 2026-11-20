@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 43** (Modules 1 & 2 complete · Module 3: Machine Learning in progress)
+**Covered so far: Day 1 – Day 46** (Modules 1–3 complete · Module 4: Deep Learning begins)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1760,6 +1760,55 @@ Five animations, 19 slides, 12 practice questions in four parts, 130 verified as
 | Teaching notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-43-K-Means-Clustering/Day43_Teaching_Notebook.ipynb) |
 | Practice questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-43-K-Means-Clustering/Day43_Practice_Questions.ipynb) |
 | Practice solutions | *posted after the session* |
+
+---
+
+
+
+### Day 44 — Trees and Density
+
+Hierarchical clustering and DBSCAN: groups inferred from merge structure or dense regions, with noise handled explicitly.
+
+📁 [`Day-44-Trees-and-Density`](Day-44-Trees-and-Density)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-44-Trees-and-Density/Day44_Trees_and_Density.pdf) · [PowerPoint](Day-44-Trees-and-Density/Day44_Trees_and_Density.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-44-Trees-and-Density/Day44_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-44-Trees-and-Density/Day44_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-44-Trees-and-Density/Day44_Practice_Solutions.ipynb) |
+
+---
+
+### Day 45 — Too Many Columns
+
+Principal Component Analysis: finding directions of greatest variance, scaling before PCA, choosing components and understanding lost information.
+
+📁 [`Day-45-Too-Many-Columns`](Day-45-Too-Many-Columns)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-45-Too-Many-Columns/Day45_Too_Many_Columns.pdf) · [PowerPoint](Day-45-Too-Many-Columns/Day45_Too_Many_Columns.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-45-Too-Many-Columns/Day45_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-45-Too-Many-Columns/Day45_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-45-Too-Many-Columns/Day45_Practice_Solutions.ipynb) |
+
+---
+
+## Module 4 — Deep Learning
+
+### Day 46 — Deep Learning Begins: One Neuron and the Perceptron
+
+An introduction for first-year students: where neural networks fit, the structure of an artificial neuron, inputs and weights, the bias, weighted sum, step activation, and a hand-worked binary prediction. The 22-slide deck includes a generated cover illustration, editable diagrams, a three-step calculation reveal, and fade transitions. The PDF contains static versions of all slides. A decision-boundary diagram and XOR show the limit of a single perceptron. Training and deeper networks follow next session.
+
+📁 [`Day-46-Deep-Learning-Perceptron`](Day-46-Deep-Learning-Perceptron)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-46-Deep-Learning-Perceptron/Day46_Deep_Learning_Perceptron.pdf) · [PowerPoint with transitions](Day-46-Deep-Learning-Perceptron/Day46_Deep_Learning_Perceptron.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-46-Deep-Learning-Perceptron/Day46_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-46-Deep-Learning-Perceptron/Day46_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-46-Deep-Learning-Perceptron/Day46_Practice_Solutions.ipynb) — share after class |
 
 ---
 
