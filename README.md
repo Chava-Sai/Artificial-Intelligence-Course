@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 46** (Modules 1–3 complete · Module 4: Deep Learning begins)
+**Covered so far: Day 1 – Day 47** (Modules 1–3 complete · Module 4: Deep Learning begins)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1799,7 +1799,7 @@ Principal Component Analysis: finding directions of greatest variance, scaling b
 
 ### Day 46 — Deep Learning Begins: One Neuron and the Perceptron
 
-An introduction for first-year students: where neural networks fit, the structure of an artificial neuron, inputs and weights, the bias, weighted sum, step activation, and a hand-worked binary prediction. The 22-slide deck includes a generated cover illustration, editable diagrams, a three-step calculation reveal, and fade transitions. The PDF contains static versions of all slides. A decision-boundary diagram and XOR show the limit of a single perceptron. Training and deeper networks follow next session.
+An introduction for first-year students: where neural networks fit, the structure of an artificial neuron, inputs and weights, the bias, weighted sum, step activation, and a hand-worked binary prediction. The 22-slide deck includes a generated cover illustration, editable diagrams, a three-step calculation reveal, and fade transitions. The PDF contains static versions of all slides. A decision-boundary diagram and XOR show the limit of a single perceptron. Activation and loss functions follow in Day 47.
 
 📁 [`Day-46-Deep-Learning-Perceptron`](Day-46-Deep-Learning-Perceptron)
 
@@ -1809,6 +1809,21 @@ An introduction for first-year students: where neural networks fit, the structur
 | Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-46-Deep-Learning-Perceptron/Day46_Teaching_Notebook.ipynb) |
 | Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-46-Deep-Learning-Perceptron/Day46_Practice_Questions.ipynb) |
 | Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-46-Deep-Learning-Perceptron/Day46_Practice_Solutions.ipynb) — share after class |
+
+---
+
+### Day 47 — Activation and Loss Functions
+
+What happens after a neuron's weighted score: step, sigmoid, tanh, ReLU, Leaky ReLU, and softmax. Then how training measures mistakes with MSE, MAE, binary cross entropy, and multiclass cross entropy. The 27-slide deck uses editable plots, a worked prediction, staged reveals, and fade transitions. The teaching notebook provides live NumPy examples; separate practice and solution notebooks contain 12 questions.
+
+📁 [`Day-47-Activation-and-Loss-Functions`](Day-47-Activation-and-Loss-Functions)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-47-Activation-and-Loss-Functions/Day47_Activation_and_Loss_Functions.pdf) · [PowerPoint with transitions](Day-47-Activation-and-Loss-Functions/Day47_Activation_and_Loss_Functions.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-47-Activation-and-Loss-Functions/Day47_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-47-Activation-and-Loss-Functions/Day47_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-47-Activation-and-Loss-Functions/Day47_Practice_Solutions.ipynb) — share after class |
 
 ---
 
