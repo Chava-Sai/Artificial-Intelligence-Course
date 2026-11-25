@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 47** (Modules 1–3 complete · Module 4: Deep Learning begins)
+**Covered so far: Day 1 – Day 48** (Modules 1–3 complete · Module 4: Deep Learning begins)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1824,6 +1824,21 @@ What happens after a neuron's weighted score: step, sigmoid, tanh, ReLU, Leaky R
 | Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-47-Activation-and-Loss-Functions/Day47_Teaching_Notebook.ipynb) |
 | Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-47-Activation-and-Loss-Functions/Day47_Practice_Questions.ipynb) |
 | Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-47-Activation-and-Loss-Functions/Day47_Practice_Solutions.ipynb) — share after class |
+
+---
+
+### Day 48 — Forward Propagation, Backpropagation and Gradient Descent
+
+One complete training step in a two-input, two-hidden-unit binary classifier. The 54-slide lesson pairs formulas with staged network diagrams: highlighted paths carry input values through hidden neurons to the prediction and loss, then carry gradients back along the connections. It derives output and hidden gradients with the chain rule, updates every parameter, and verifies that the example's loss falls. It also covers minibatches, vectorized shapes, learning rate, vanishing and exploding gradients, autodiff, and numerical gradient checking. The NumPy teaching notebook runs the calculation and trains a tiny classifier; separate practice and solution notebooks contain 12 questions.
+
+📁 [`Day-48-Forward-Propagation-Backpropagation-Gradient-Descent`](Day-48-Forward-Propagation-Backpropagation-Gradient-Descent)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Forward_Propagation_Backpropagation_Gradient_Descent.pdf) · [PowerPoint with transitions](Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Forward_Propagation_Backpropagation_Gradient_Descent.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Practice_Solutions.ipynb) — share after class |
 
 ---
 
