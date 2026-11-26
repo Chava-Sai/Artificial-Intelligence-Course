@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 48** (Modules 1–3 complete · Module 4: Deep Learning begins)
+**Covered so far: Day 1 – Day 49** (Modules 1–3 complete · Module 4: Deep Learning begins)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1839,6 +1839,21 @@ One complete training step in a two-input, two-hidden-unit binary classifier. Th
 | Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Teaching_Notebook.ipynb) |
 | Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Practice_Questions.ipynb) |
 | Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-48-Forward-Propagation-Backpropagation-Gradient-Descent/Day48_Practice_Solutions.ipynb) — share after class |
+
+---
+
+### Day 49 — Building a Neural Network with PyTorch
+
+Turn Day 48's forward, loss, backward, and update equations into a real classifier. The 42-slide deck uses a two-moons dataset, a 2 → 16 → 16 → 1 architecture diagram, shape maps, staged signal paths, code panels, and a short Keras/TensorFlow translation. The teaching notebook generates its own data, trains with PyTorch, checks held-out predictions, plots the learned boundary, and shows in-memory save/load. Separate practice and solution notebooks contain 12 tasks.
+
+📁 [`Day-49-Building-a-Neural-Network-with-PyTorch`](Day-49-Building-a-Neural-Network-with-PyTorch)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Building_a_Neural_Network_with_PyTorch.pdf) · [PowerPoint with transitions](Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Building_a_Neural_Network_with_PyTorch.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Practice_Solutions.ipynb) — share after class |
 
 ---
 
