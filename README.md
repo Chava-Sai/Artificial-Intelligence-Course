@@ -5,7 +5,7 @@
 Course materials for the Artificial Intelligence & Data Science programme — slides, teaching
 notebooks and practice sets, published session by session.
 
-**Covered so far: Day 1 – Day 49** (Modules 1–3 complete · Module 4: Deep Learning begins)
+**Covered so far: Day 1 – Day 50** (Modules 1–3 complete · Module 4: Deep Learning begins)
 
 *Day numbering is this repo's own running sequence; the bracketed topic references (2.1, 2.4, …) are the ones from the course syllabus.*
 
@@ -1854,6 +1854,21 @@ Turn Day 48's forward, loss, backward, and update equations into a real classifi
 | Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Teaching_Notebook.ipynb) |
 | Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Practice_Questions.ipynb) |
 | Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-49-Building-a-Neural-Network-with-PyTorch/Day49_Practice_Solutions.ipynb) — share after class |
+
+---
+
+### Day 50 — Optimizers and Learning Rate Scheduling
+
+Follow each parameter update from the gradient to the new weights. The 41-slide deck pairs formulas with contour paths, update diagrams, schedule curves, and the correct PyTorch training-loop order. It covers SGD, momentum, Adam, AdamW, constant/step/cosine/plateau/one-cycle schedules, numerical examples, diagnostics, and checkpoint state. The teaching notebook compares optimizers and schedules on the Day 49 two-moons classifier; separate practice and solution notebooks contain 12 tasks.
+
+📁 [`Day-50-Optimizers-and-Learning-Rate-Scheduling`](Day-50-Optimizers-and-Learning-Rate-Scheduling)
+
+| File | |
+|---|---|
+| [Slides (PDF)](Day-50-Optimizers-and-Learning-Rate-Scheduling/Day50_Optimizers_and_Learning_Rate_Scheduling.pdf) · [PowerPoint with transitions](Day-50-Optimizers-and-Learning-Rate-Scheduling/Day50_Optimizers_and_Learning_Rate_Scheduling.pptx) | |
+| Teaching notebook | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-50-Optimizers-and-Learning-Rate-Scheduling/Day50_Teaching_Notebook.ipynb) |
+| Practice questions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-50-Optimizers-and-Learning-Rate-Scheduling/Day50_Practice_Questions.ipynb) |
+| Practice solutions | [Open in Colab](https://colab.research.google.com/github/Chava-Sai/Artificial-Intelligence-Course/blob/main/Day-50-Optimizers-and-Learning-Rate-Scheduling/Day50_Practice_Solutions.ipynb) — share after class |
 
 ---
 
